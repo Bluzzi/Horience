@@ -4,7 +4,6 @@ namespace Horience.Utils
 {
     class Binary
     {
-        
         public static long SignByte(long value)
         {
             return value << 56 >> 56;
@@ -64,9 +63,10 @@ namespace Horience.Utils
         {
             return ((bytes[0] & 0xff) << 24) + ((bytes[1] & 0xff) << 16) + ((bytes[2] & 0xff) << 8) + (bytes[3] & 0xff);
         }
+
         public static long ReadTriad(byte[] bytes)
         {
-            return ReadInt(new byte[] { (byte)0x00, bytes[0], bytes[1], bytes[2] });
+            return ReadInt(new byte[] { (byte) 0x00, bytes[0], bytes[1], bytes[2] });
         }
     }
 }
