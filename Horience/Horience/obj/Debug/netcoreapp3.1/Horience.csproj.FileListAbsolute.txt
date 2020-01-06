@@ -1,11 +1,14 @@
 C:\Users\Administrator\source\repos\Horience\Horience\Horience\bin\Debug\netcoreapp3.1\Horience.exe
+C:\Users\Administrator\source\repos\Horience\Horience\Horience\obj\Debug\netcoreapp3.1\Horience.csprojAssemblyReference.cache
+C:\Users\Administrator\source\repos\Horience\Horience\Horience\obj\Debug\netcoreapp3.1\Horience.AssemblyInfoInputs.cache
+C:\Users\Administrator\source\repos\Horience\Horience\Horience\obj\Debug\netcoreapp3.1\Horience.AssemblyInfo.cs
+C:\Users\Administrator\source\repos\Horience\Horience\Horience\bin\Debug\netcoreapp3.1\fNbt.dll
+C:\Users\Administrator\source\repos\Horience\Horience\Horience\obj\Debug\netcoreapp3.1\Horience.csproj.CopyComplete
 C:\Users\Administrator\source\repos\Horience\Horience\Horience\bin\Debug\netcoreapp3.1\Horience.deps.json
 C:\Users\Administrator\source\repos\Horience\Horience\Horience\bin\Debug\netcoreapp3.1\Horience.runtimeconfig.json
 C:\Users\Administrator\source\repos\Horience\Horience\Horience\bin\Debug\netcoreapp3.1\Horience.runtimeconfig.dev.json
 C:\Users\Administrator\source\repos\Horience\Horience\Horience\bin\Debug\netcoreapp3.1\Horience.dll
 C:\Users\Administrator\source\repos\Horience\Horience\Horience\bin\Debug\netcoreapp3.1\Horience.pdb
-C:\Users\Administrator\source\repos\Horience\Horience\Horience\obj\Debug\netcoreapp3.1\Horience.csprojAssemblyReference.cache
-C:\Users\Administrator\source\repos\Horience\Horience\Horience\obj\Debug\netcoreapp3.1\Horience.AssemblyInfoInputs.cache
-C:\Users\Administrator\source\repos\Horience\Horience\Horience\obj\Debug\netcoreapp3.1\Horience.AssemblyInfo.cs
+C:\Users\Administrator\source\repos\Horience\Horience\Horience\bin\Debug\netcoreapp3.1\Newtonsoft.Json.dll
 C:\Users\Administrator\source\repos\Horience\Horience\Horience\obj\Debug\netcoreapp3.1\Horience.dll
 C:\Users\Administrator\source\repos\Horience\Horience\Horience\obj\Debug\netcoreapp3.1\Horience.pdb

@@ -1,9 +1,11 @@
 ﻿using System;
-
+using Horience.Logging;
 namespace Horience
 {
     class Program
     {
+        private Logger Logger = new Logger("Horience");
+
         static void Main(string[] args)
         {
             new Program(args);
@@ -11,7 +13,12 @@ namespace Horience
 
         public Program(string[] args)
         {
-            Console.WriteLine("Starting Horience...");
+            GetLogger().Info("Starting Horience...");
+        }
+
+        public Logger GetLogger()
+        {
+            return Logger;
         }
     }
 }

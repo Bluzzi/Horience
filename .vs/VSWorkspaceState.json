@@ -1,6 +1,10 @@
 {
   "ExpandedNodes": [
-    ""
+    "",
+    "\\Horience",
+    "\\Horience\\Horience",
+    "\\Horience\\Horience\\Logging"
   ],
+  "SelectedNode": "\\Horience\\Horience\\Program.cs",
   "PreviewInSolutionExplorer": false
 }
