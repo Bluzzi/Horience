@@ -1,0 +1,5 @@
+# Visual studio settings:
+.vs/
+
+# Debug files:
+obj/
