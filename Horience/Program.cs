@@ -1,6 +1,4 @@
-﻿using Horience.Logger;
-
-namespace Horience
+﻿namespace Horience
 {
     class Program
     {
