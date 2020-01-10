@@ -2,6 +2,8 @@
 {
     class LoggerColors
     {
+		//TODO: adapter au mutliplatform.
+
 		public const string Dark = "\x1b[38;5;16m";
 		public const string DarkBlue = "\x1b[38;5;19m";
 		public const string DarkGreen = "\x1b[38;5;34m";
