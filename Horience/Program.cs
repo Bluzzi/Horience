@@ -1,4 +1,6 @@
-﻿namespace Horience
+﻿using System;
+
+namespace Horience
 {
     class Program
     {
@@ -12,6 +14,7 @@
         public Program(string[] args)
         {
             GetLogger().Info("Starting Horience...");
+            Console.ReadKey(); //HACK
         }
 
         public Logger.Logger GetLogger()
