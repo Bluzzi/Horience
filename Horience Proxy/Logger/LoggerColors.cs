@@ -1,7 +1,7 @@
 ﻿namespace Horience.Logger
 {
-    class LoggerColors
-    {
+	class LoggerColors
+	{
 		//TODO: adapter au mutliplatform.
 
 		public const string Dark = "\x1b[38;5;16m";
@@ -20,5 +20,5 @@
 		public const string LightPurple = "\x1b[38;5;207m";
 		public const string Yellow = "\x1b[38;5;227m";
 		public const string White = "\x1b[38;5;231m";
-    }
+	}
 }
