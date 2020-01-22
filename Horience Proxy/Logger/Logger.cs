@@ -14,19 +14,25 @@ namespace Horience.Logger
         public void Info(string message)
         {
             DateTime DateTime = DateTime.Now;
-            Console.WriteLine(LoggerColors.Aqua + "[" + DateTime.Hour + ":" + DateTime.Minute + ":" + DateTime.Second + "] [" + GetPrefix() + "/INFO] " + LoggerColors.White + message);
+            Console.ForegroundColor = ConsoleColor.Cyan;
+            Console.WriteLine("[" + DateTime.Hour + ":" + DateTime.Minute + ":" + DateTime.Second + "] [" + GetPrefix() + "/INFO] " + message);
+            //Console.WriteLine(LoggerColors.Aqua + "[" + DateTime.Hour + ":" + DateTime.Minute + ":" + DateTime.Second + "] [" + GetPrefix() + "/INFO] " + LoggerColors.White + message);
         }
 
         public void Error(string message)
         {
             DateTime DateTime = DateTime.Now;
-            Console.WriteLine(LoggerColors.Red + "[" + DateTime.Hour + ":" + DateTime.Minute + ":" + DateTime.Second + "] [" + GetPrefix() + "/ERROR] " + message);
+            Console.ForegroundColor = ConsoleColor.Red;
+            Console.WriteLine("[" + DateTime.Hour + ":" + DateTime.Minute + ":" + DateTime.Second + "] [" + GetPrefix() + "/ERROR] " + message);
+            //Console.WriteLine(LoggerColors.Red + " [" + DateTime.Hour + ":" + DateTime.Minute + ":" + DateTime.Second + "] [" + GetPrefix() + "/ERROR] " + message);
         }
 
         public void Debug(string message)
         {
             DateTime DateTime = DateTime.Now;
-            Console.WriteLine(LoggerColors.Purple + "[" + DateTime.Hour + ":" + DateTime.Minute + ":" + DateTime.Second + "] [" + GetPrefix() + "/DEBUG] " + message);
+            Console.ForegroundColor = ConsoleColor.Magenta;
+            Console.WriteLine("[" + DateTime.Hour + ":" + DateTime.Minute + ":" + DateTime.Second + "] [" + GetPrefix() + "/DEBUG] " + message);
+            //Console.WriteLine(LoggerColors.Purple + "[" + DateTime.Hour + ":" + DateTime.Minute + ":" + DateTime.Second + "] [" + GetPrefix() + "/DEBUG] " + message);
         }
 
         public string GetPrefix()

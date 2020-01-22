@@ -1,4 +1,7 @@
 ﻿using System;
+using System.IO;
+using Horience.Utils;
+using Newtonsoft.Json;
 
 namespace Horience
 {
@@ -14,7 +17,17 @@ namespace Horience
         public Program(string[] args)
         {
             GetLogger().Info("Starting Horience...");
-            Console.ReadKey(); //HACK
+
+            if (!File.Exists("config.json"))
+            {
+                GetLogger().Error("config.json file not found.");
+                Console.ReadKey();
+                return;
+            }
+            Configuration Config = JsonConvert.DeserializeObject<Configuration>(File.ReadAllText("config.json"));
+            GetLogger().Info("Starting proxy server on : " + Config.bindIp + ":" + Config.bindPort);
+            
+            Console.ReadKey();
         }
 
         public Logger.Logger GetLogger()
