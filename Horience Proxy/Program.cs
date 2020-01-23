@@ -21,7 +21,7 @@ namespace Horience
             Instance = this;
             GetLogger().Info("Starting Horience...");
             Config = new Configuration();
-            Console.WriteLine("Starting proxy server on : " + GetConfig().GetIp() + ":" + GetConfig().GetPort());
+            GetLogger().Info("Starting proxy server on : " + GetConfig().GetIp() + ":" + GetConfig().GetPort());
             Console.ReadKey();
         }
 
