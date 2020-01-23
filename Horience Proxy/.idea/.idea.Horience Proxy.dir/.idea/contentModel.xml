@@ -12,6 +12,7 @@
       </e>
       <e p="Network" t="Include">
         <e p="NetworkBinaryStream.cs" t="Include" />
+        <e p="UdpSocket.cs" t="Include" />
       </e>
       <e p="obj" t="ExcludeRecursive">
         <e p="Debug" t="Include">

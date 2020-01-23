@@ -1,7 +1,6 @@
 ﻿using System;
-using System.IO;
+using Horience.Network;
 using Horience.Utils;
-using Newtonsoft.Json;
 
 namespace Horience
 {
@@ -10,6 +9,7 @@ namespace Horience
         private static Program Instance;
         private Logger.Logger Logger = new Logger.Logger("Horience");
         private Configuration Config;
+        private UdpSocket Socket;
 
         static void Main(string[] args)
         {
@@ -22,6 +22,7 @@ namespace Horience
             GetLogger().Info("Starting Horience...");
             Config = new Configuration();
             GetLogger().Info("Starting proxy server on : " + GetConfig().GetIp() + ":" + GetConfig().GetPort());
+            Socket = new UdpSocket(GetConfig());
             Console.ReadKey();
         }
 
@@ -38,6 +39,11 @@ namespace Horience
         public Configuration GetConfig()
         {
             return Config;
+        }
+
+        public UdpSocket GetSocket()
+        {
+            return Socket;
         }
     }
 }
