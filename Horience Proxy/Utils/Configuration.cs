@@ -24,9 +24,9 @@ namespace Horience.Utils
         };
 
         public string BindIp;
-        public int BindPort;
+        public long BindPort;
         public string RemoteHost;
-        public int RemotePort;
+        public long RemotePort;
 
         public Configuration()
         {
@@ -38,9 +38,9 @@ namespace Horience.Utils
 
             Dictionary<string, object> Rows = JsonConvert.DeserializeObject<Dictionary<string, object>>(File.ReadAllText("config.json"));
             BindIp = (string) Rows["BindIp"];
-            BindPort = Convert.ToInt32(Rows["BindPort"]);
+            BindPort = (long) Rows["BindPort"];
             RemoteHost = (string) Rows["RemoteIp"];
-            RemotePort = Convert.ToInt32(Rows["RemotePort"]);
+            RemotePort = (long) Rows["RemotePort"];
         }
 
         public string GetIp()
@@ -48,7 +48,7 @@ namespace Horience.Utils
             return BindIp;
         }
         
-        public int GetPort()
+        public long GetPort()
         {
             return BindPort;
         }
@@ -58,7 +58,7 @@ namespace Horience.Utils
             return RemoteHost;
         }
         
-        public int GetRemotePort()
+        public long GetRemotePort()
         {
             return RemotePort;
         }
