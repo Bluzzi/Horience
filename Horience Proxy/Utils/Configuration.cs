@@ -7,7 +7,7 @@ namespace Horience.Utils
 {
     public class Configuration
     {
-        public static readonly IDictionary<string, object> BaseConfig = new Dictionary<string, object>()
+        private static readonly IDictionary<string, object> BaseConfig = new Dictionary<string, object>()
         {
             {
                 "BindIp", "0.0.0.0"
@@ -23,10 +23,10 @@ namespace Horience.Utils
             }
         };
 
-        public string BindIp;
-        public long BindPort;
-        public string RemoteHost;
-        public long RemotePort;
+        private string BindIp;
+        private long BindPort;
+        private string RemoteHost;
+        private long RemotePort;
 
         public Configuration()
         {
@@ -36,7 +36,7 @@ namespace Horience.Utils
                 Create();
             }
 
-            Dictionary<string, object> Rows = JsonConvert.DeserializeObject<Dictionary<string, object>>(File.ReadAllText("config.json"));
+            IDictionary<string, object> Rows = JsonConvert.DeserializeObject<Dictionary<string, object>>(File.ReadAllText("config.json"));
             BindIp = (string) Rows["BindIp"];
             BindPort = (long) Rows["BindPort"];
             RemoteHost = (string) Rows["RemoteIp"];
