@@ -7,7 +7,9 @@ namespace Horience
 {
     class Program
     {
+        private static Program Instance;
         private Logger.Logger Logger = new Logger.Logger("Horience");
+        private Configuration Config;
 
         static void Main(string[] args)
         {
@@ -16,23 +18,26 @@ namespace Horience
 
         public Program(string[] args)
         {
+            Instance = this;
             GetLogger().Info("Starting Horience...");
-
-            if (!File.Exists("config.json"))
-            {
-                GetLogger().Error("config.json file not found.");
-                Console.ReadKey();
-                return;
-            }
-            Configuration Config = JsonConvert.DeserializeObject<Configuration>(File.ReadAllText("config.json"));
-            GetLogger().Info("Starting proxy server on : " + Config.bindIp + ":" + Config.bindPort);
-            
+            Config = new Configuration();
+            Console.WriteLine("Starting proxy server on : " + GetConfig().GetIp() + ":" + GetConfig().GetPort());
             Console.ReadKey();
         }
 
+        public static Program GetInstance()
+        {
+            return Instance;
+        }
+        
         public Logger.Logger GetLogger()
         {
             return Logger;
+        }
+
+        public Configuration GetConfig()
+        {
+            return Config;
         }
     }
 }
