@@ -2,9 +2,9 @@
 
 namespace Horience.Network
 {
-    class NetworkBinaryStream : Binary
+    class NetworkBinaryStream// : BinaryStream
     {
-        public NetworkBinaryStream()
+        public NetworkBinaryStream(byte[] stream)
         {
             //TODO: ...
         }
