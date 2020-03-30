@@ -1,23 +1,15 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 
 namespace Horience.Core
 {
     class Main
     {
-        enum MODE
+        public enum MODES
         {
             CHEAT = 0,
             UTILS = 1,
             ALL = 2,
         }
-
-        public const int MODE_CHEAT = 0;
-        public const int MODE_UTILS = 1;
-        public const int MODE_ALL = 2;
 
         private static Main Instance;
 
@@ -25,7 +17,10 @@ namespace Horience.Core
 
         public Main(int Mode)
         {
-            if(new List<int>().Exists(Mode, element => element == "d"))
+            if(!Enum.IsDefined(typeof(MODES), (object) Mode))
+            {
+                throw new Exception("Invalid mode, don't use magic number");
+            }
 
             if (Main.Instance == null)
             {
