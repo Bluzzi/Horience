@@ -15,7 +15,7 @@ using System.Windows.Shapes;
 namespace Horience.Core
 {
     /// <summary>
-    /// Interaction logic for Panel.xaml
+    /// Logique d'interaction pour Window1.xaml
     /// </summary>
     public partial class Panel : Window
     {
