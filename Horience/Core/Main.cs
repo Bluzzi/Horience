@@ -1,4 +1,5 @@
 ﻿using System;
+using Horience.Core.Api;
 
 namespace Horience.Core
 {
@@ -14,6 +15,8 @@ namespace Horience.Core
         private static Main Instance;
 
         private int Mode;
+
+        private ApiGetters Api = new ApiGetters();
 
         public Main(int Mode)
         {
@@ -37,6 +40,8 @@ namespace Horience.Core
             }
         }
 
+        // Getters :
+
         public static Main getInstance()
         {
             return Instance;
@@ -45,6 +50,11 @@ namespace Horience.Core
         public int getMode()
         {
             return Mode;
+        }
+
+        public ApiGetters getApi()
+        {
+            return Api;
         }
     }
 }

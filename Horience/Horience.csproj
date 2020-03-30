@@ -71,6 +71,8 @@
       <DependentUpon>App.xaml</DependentUpon>
       <SubType>Code</SubType>
     </Compile>
+    <Compile Include="Core\Api\ApiGetters.cs" />
+    <Compile Include="Core\Api\Color.cs" />
     <Compile Include="Core\Main.cs" />
     <Compile Include="Core\Panel.xaml.cs">
       <DependentUpon>Panel.xaml</DependentUpon>

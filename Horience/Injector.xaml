@@ -16,10 +16,12 @@
     <Grid Background="#FF23272A">
         <Label Content="HORIENCE" Margin="62,35,63.6,412.4" FontFamily="Calibri" FontSize="75" Foreground="White" Grid.ColumnSpan="2"/>
 
-        <CheckBox x:Name="CheatCheckBox" Content="Cheat" HorizontalAlignment="Left" Margin="38,200,0,0" VerticalAlignment="Top" Height="17" Width="60"/>
-        <CheckBox x:Name="UtilsCheckBox" Content="Utils" HorizontalAlignment="Left" Margin="38,222,0,0" VerticalAlignment="Top" RenderTransformOrigin="0.755,-5.842"/>
+        <CheckBox x:Name="CheatCheckBox" HorizontalAlignment="Left" Margin="53,194,0,0" VerticalAlignment="Top" Height="18" Width="17" FontSize="22" Checked="CheatCheckBox_Checked" Background="White" Unchecked="CheatCheckBox_Unchecked"/>
+        <CheckBox x:Name="UtilsCheckBox" Content="" HorizontalAlignment="Left" Margin="53,280,0,0" VerticalAlignment="Top" RenderTransformOrigin="0.755,-5.842"/>
 
-        <Button Content="Inject" HorizontalAlignment="Left" Margin="187,287,0,0" VerticalAlignment="Top" Width="75" Click="Inject"/>
+        <Button Content="Inject" HorizontalAlignment="Left" Margin="84,400,0,0" VerticalAlignment="Top" Width="316" Click="Inject" Height="36" FontSize="24"/>
         <Label x:Name="ErrorLabel" Content="" HorizontalAlignment="Left" VerticalAlignment="Top" Margin="204,256,0,0" Foreground="Red"/>
+        <Label x:Name="CheatLabel" Content="Cheat" HorizontalAlignment="Left" Margin="84,167,0,0" VerticalAlignment="Top" FontSize="36" Background="{x:Null}" Foreground="White" Height="65" Width="148"/>
+        <Label x:Name="UtilsLabel" Content="Utils" HorizontalAlignment="Left" Margin="84,256,0,0" VerticalAlignment="Top" FontSize="36" Background="#00000000" Foreground="White" Height="74" Width="178"/>
     </Grid>
 </Window>
