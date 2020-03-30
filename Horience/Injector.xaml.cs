@@ -1,5 +1,4 @@
-﻿using System.Diagnostics;
-using System.Windows;
+﻿using System.Windows;
 using Horience.Core;
 
 namespace Horience
@@ -19,20 +18,25 @@ namespace Horience
             bool CheatBoxIsChecked = CheatCheckBox.IsChecked ?? false;
             bool UtilsBoxIsChecked = UtilsCheckBox.IsChecked ?? false;
 
-            // Create Main instance with the mode :
+            // Check if a checkbox is checked and create Main instance with the mode :
             if (CheatBoxIsChecked && UtilsBoxIsChecked)
             {
-                new Main(Main.MODE_ALL);
-            } 
+                new Main((int) Main.MODES.ALL);
+            }
             else if (CheatBoxIsChecked)
             {
-                new Main(Main.MODE_CHEAT);
+                new Main((int) Main.MODES.CHEAT);
+            }
+            else if (UtilsBoxIsChecked)
+            {
+                new Main((int) Main.MODES.UTILS);
             }
             else
             {
-                new Main(Main.MODE_UTILS);
+                ErrorLabel.Content = "Select a category !";
+                return;
             }
-
+            
             // Close this window :
             Close();
         }
