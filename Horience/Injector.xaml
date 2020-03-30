@@ -5,12 +5,13 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:Horience"
         mc:Ignorable="d"
-        Title="Horience" Height="300" Width="250" WindowStyle="None" Padding="0,0,500,600" ResizeMode="NoResize">
+        Title="Horience" Height="300" Width="250" WindowStyle="None" Padding="0,0,500,600" ResizeMode="NoResize" WindowStartupLocation="CenterScreen">
   <Grid Background="#FF23272A">
     <Label Content="HORIENCE" Margin="31,34,31.2,201.6" FontFamily="Calibri" FontSize="40" Foreground="White"/>
 
     <CheckBox x:Name="CheatCheckBox" Content="Cheat" HorizontalAlignment="Left" Margin="31,132,0,0" VerticalAlignment="Top" Foreground="White"/>
     <CheckBox x:Name="UtilsCheckBox" Content="Utils" HorizontalAlignment="Left" Margin="31,152,0,0" VerticalAlignment="Top" Foreground="White"/>
+      
     <Button Content="Inject" HorizontalAlignment="Left" Margin="84,205,0,0" VerticalAlignment="Top" Width="75" Click="Inject"/>
   </Grid>
 </Window>
