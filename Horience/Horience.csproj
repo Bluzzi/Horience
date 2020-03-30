@@ -4,7 +4,7 @@
   <PropertyGroup>
     <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
     <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
-    <ProjectGuid>{4A9FB534-D26D-48F6-BE0B-66493A8C156A}</ProjectGuid>
+    <ProjectGuid>{73FE2B5D-2158-4A1C-B841-4D3069EEA58B}</ProjectGuid>
     <OutputType>WinExe</OutputType>
     <RootNamespace>Horience</RootNamespace>
     <AssemblyName>Horience</AssemblyName>
@@ -53,6 +53,7 @@
   <ItemGroup>
     <ApplicationDefinition Include="App.xaml">
       <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
     </ApplicationDefinition>
     <Page Include="MainWindow.xaml">
       <Generator>MSBuild:Compile</Generator>

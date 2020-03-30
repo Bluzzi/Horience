@@ -1,9 +1,9 @@
 ﻿
 Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio Version 16
-VisualStudioVersion = 16.0.29613.14
+VisualStudioVersion = 16.0.29920.165
 MinimumVisualStudioVersion = 10.0.40219.1
-Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Horience Proxy", "Horience Proxy\Horience Proxy.csproj", "{8A9C82F8-919C-4AC7-9386-54ADD38C33DC}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Horience", "Horience\Horience.csproj", "{73FE2B5D-2158-4A1C-B841-4D3069EEA58B}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -11,15 +11,15 @@ Global
 		Release|Any CPU = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(ProjectConfigurationPlatforms) = postSolution
-		{8A9C82F8-919C-4AC7-9386-54ADD38C33DC}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{8A9C82F8-919C-4AC7-9386-54ADD38C33DC}.Debug|Any CPU.Build.0 = Debug|Any CPU
-		{8A9C82F8-919C-4AC7-9386-54ADD38C33DC}.Release|Any CPU.ActiveCfg = Release|Any CPU
-		{8A9C82F8-919C-4AC7-9386-54ADD38C33DC}.Release|Any CPU.Build.0 = Release|Any CPU
+		{73FE2B5D-2158-4A1C-B841-4D3069EEA58B}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{73FE2B5D-2158-4A1C-B841-4D3069EEA58B}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{73FE2B5D-2158-4A1C-B841-4D3069EEA58B}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{73FE2B5D-2158-4A1C-B841-4D3069EEA58B}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
 	EndGlobalSection
 	GlobalSection(ExtensibilityGlobals) = postSolution
-		SolutionGuid = {117CA29F-7050-40C6-BF0E-496ADB72E57D}
+		SolutionGuid = {8DBE8B65-8817-43CF-8D39-221D88604AA8}
 	EndGlobalSection
 EndGlobal
