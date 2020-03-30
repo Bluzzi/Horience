@@ -14,9 +14,7 @@ namespace Horience.Core
 
         private static Main Instance;
 
-        private int Mode;
-
-        private ApiGetters Api = new ApiGetters();
+        private readonly int Mode;
 
         public Main(int Mode)
         {
@@ -42,19 +40,19 @@ namespace Horience.Core
 
         // Getters :
 
-        public static Main getInstance()
+        public static Main GetInstance()
         {
             return Instance;
         }
 
-        public int getMode()
+        public ApiGetters GetApi()
         {
-            return Mode;
+            return new ApiGetters();
         }
 
-        public ApiGetters getApi()
+        public int GetMode()
         {
-            return Api;
+            return Mode;
         }
     }
 }
