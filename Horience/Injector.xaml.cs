@@ -1,41 +1,40 @@
-﻿
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
+﻿using System.Diagnostics;
 using System.Windows;
-using System.Windows.Controls;
-using System.Windows.Data;
-using System.Windows.Documents;
-using System.Windows.Input;
-using System.Windows.Media;
-using System.Windows.Media.Imaging;
-using System.Windows.Navigation;
-using System.Windows.Shapes;
-using System.Diagnostics;
+using Horience.Core;
 
 namespace Horience
 {
-    public partial class MainWindow : Window
+    public partial class Injector : Window
     {
-        public MainWindow()
+        public Injector()
         {
             InitializeComponent();
         }
 
-        private void ActiveCheat(object sender, RoutedEventArgs e)
-        {
-
-        }
-
-        private void ActiveUtils(object sender, RoutedEventArgs e)
-        {
-
-        }
+        // Inject the cheat, this close injector window and open the panel with specified mode :
 
         private void Inject(object sender, RoutedEventArgs e)
         {
+            // Get checkbox values :
+            bool CheatBoxIsChecked = CheatCheckBox.IsChecked ?? false;
+            bool UtilsBoxIsChecked = UtilsCheckBox.IsChecked ?? false;
 
+            // Create Main instance with the mode :
+            if (CheatBoxIsChecked && UtilsBoxIsChecked)
+            {
+                new Main(Main.MODE_ALL);
+            } 
+            else if (CheatBoxIsChecked)
+            {
+                new Main(Main.MODE_CHEAT);
+            }
+            else
+            {
+                new Main(Main.MODE_UTILS);
+            }
+
+            // Close this window :
+            Close();
         }
     }
 }
