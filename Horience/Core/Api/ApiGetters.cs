@@ -1,3 +1,5 @@
+using Horience.Core.Api.Colors;
+
 namespace Horience.Core.Api
 {
     class ApiGetters
