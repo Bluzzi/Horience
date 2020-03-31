@@ -8,5 +8,10 @@ namespace Horience.Core.Api
         {
             return new ColorHelper();
         }
+
+        public MemoryEditor GetMemoryEditor()
+        {
+            return new MemoryEditor();
+        }
     }
 }
