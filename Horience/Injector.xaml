@@ -11,18 +11,33 @@
         <Style TargetType="CheckBox">
             <Setter Property="Foreground" Value="White"/>
         </Style>
+
+        <!-- Center elements -->
+        <Style x:Key="Center" TargetType="{x:Type FrameworkElement}">
+            <Setter Property="HorizontalAlignment" Value="Center"/>
+        </Style>
+
+        <Style TargetType="Label" BasedOn="{StaticResource Center}"/>
+        <Style TargetType="Button" BasedOn="{StaticResource Center}"/>
+        <Style TargetType="ProgressBar" BasedOn="{StaticResource Center}"/>
     </Window.Resources>
 
     <Grid Background="#FF23272A">
-        <ProgressBar x:Name="InjectProgressBar" HorizontalAlignment="Left" Height="36" Margin="84,400,0,0" VerticalAlignment="Top" Width="316" Background="#FFBDBCBC" Foreground="#FF43AE57" Maximum="10"/>
+        <!-- Title -->
         <Label Content="HORIENCE" Margin="62,35,63.6,412.4" FontFamily="Calibri" FontSize="75" Foreground="White" Grid.ColumnSpan="2"/>
 
-        <CheckBox x:Name="CheatCheckBox" HorizontalAlignment="Left" Margin="53,194,0,0" VerticalAlignment="Top" Height="18" Width="17" FontSize="22" Checked="CheatCheckBox_Checked" Background="White" Unchecked="CheatCheckBox_Unchecked"/>
-        <CheckBox x:Name="UtilsCheckBox" Content="" HorizontalAlignment="Left" Margin="53,280,0,0" VerticalAlignment="Top" RenderTransformOrigin="0.755,-5.842"/>
+        <!-- Cheat and Utils selectors -->
+        <Label x:Name="CheatLabel" Content="Cheat" HorizontalAlignment="Left" Margin="80,200,0,0" VerticalAlignment="Top" FontSize="36" Background="{x:Null}" Foreground="#FF741414" Height="65" Width="148"/>
+        <CheckBox x:Name="CheatCheckBox" HorizontalAlignment="Left" Margin="50,225,0,0" VerticalAlignment="Top" Height="18" Width="17" FontSize="22" Checked="CheatCheckBox_Checked" Background="White" Unchecked="CheatCheckBox_Unchecked"/>
 
-        <Button x:Name="InjectButton" Content="Inject" HorizontalAlignment="Left" Margin="84,400,0,0" VerticalAlignment="Top" Width="316" Click="Inject" Height="36" FontSize="24" Background="{x:Null}"/>
+        <Label x:Name="UtilsLabel" Content="Utils" HorizontalAlignment="Left" Margin="80,250,0,0" VerticalAlignment="Top" FontSize="36" Background="#00000000" Foreground="#FF74140F" Height="74" Width="178"/>
+        <CheckBox x:Name="UtilsCheckBox" Content="" HorizontalAlignment="Left" Margin="50,275,0,0" VerticalAlignment="Top" RenderTransformOrigin="0.755,-5.842"/>
+
+        <!-- Error indicator text -->
         <Label x:Name="ErrorLabel" Content="" HorizontalAlignment="Left" VerticalAlignment="Top" Margin="168,353,0,0" Foreground="Red" Width="218"/>
-        <Label x:Name="CheatLabel" Content="Cheat" HorizontalAlignment="Left" Margin="84,167,0,0" VerticalAlignment="Top" FontSize="36" Background="{x:Null}" Foreground="#FF741414" Height="65" Width="148"/>
-        <Label x:Name="UtilsLabel" Content="Utils" HorizontalAlignment="Left" Margin="84,251,0,0" VerticalAlignment="Top" FontSize="36" Background="#00000000" Foreground="#FF74140F" Height="74" Width="178"/>
+        
+        <!-- Injector button and loadbar -->
+        <ProgressBar x:Name="InjectProgressBar" Height="36" Margin="0,300,0,0" Width="316" Background="#FFBDBCBC" Foreground="#FF43AE57" Maximum="10"/>
+        <Button x:Name="InjectButton" Content="Inject" Margin="0,300,0,0" Width="316" Click="Inject" Height="36" FontSize="24" Background="{x:Null}"/>
     </Grid>
 </Window>
