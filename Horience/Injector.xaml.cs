@@ -24,7 +24,7 @@ namespace Horience
             bool UtilsBoxIsChecked = UtilsCheckBox.IsChecked ?? false;
 
             // Check if Minecraft Process is started
-            Process[] process = Process.GetProcessesByName("Minecraft.Windows");
+            Process[] process = Process.GetProcessesByName("Minecraft.Windows"); // As I understand it, we'll be able to change the game's values with this.
 
             // If Process equals 0 = Minecraft Windows not open 
             // Otherwise, if Process equals 1, it's on.
