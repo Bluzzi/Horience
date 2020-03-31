@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Diagnostics;
 using System.Threading;
 using System.Windows;
 using System.Windows.Media;
@@ -22,27 +23,40 @@ namespace Horience
             bool CheatBoxIsChecked = CheatCheckBox.IsChecked ?? false;
             bool UtilsBoxIsChecked = UtilsCheckBox.IsChecked ?? false;
 
-            // Check if a checkbox is checked and create Main instance with the mode :
-            if (CheatBoxIsChecked && UtilsBoxIsChecked)
+            // Check if Minecraft Process is started
+            Process[] process = Process.GetProcessesByName("Minecraft.Windows");
+
+            // If Process equals 0 = Minecraft Windows not open 
+            // Otherwise, if Process equals 1, it's on.
+            if (process.Length == 0)
             {
-                new Main((int) Main.MODES.ALL);
-            }
-            else if (CheatBoxIsChecked)
-            {
-                new Main((int) Main.MODES.CHEAT);
-            }
-            else if (UtilsBoxIsChecked)
-            {
-                new Main((int) Main.MODES.UTILS);
+                ErrorLabel.Content = "You must start Minecraft before.";
+                return;
             }
             else
             {
-                ErrorLabel.Content = "Select a category !";
-                return;
+                // Check if a checkbox is checked and create Main instance with the mode :
+                if (CheatBoxIsChecked && UtilsBoxIsChecked)
+                {
+                    new Main((int)Main.MODES.ALL);
+                }
+                else if (CheatBoxIsChecked)
+                {
+                    new Main((int)Main.MODES.CHEAT);
+                }
+                else if (UtilsBoxIsChecked)
+                {
+                    new Main((int)Main.MODES.UTILS);
+                }
+                else
+                {
+                    ErrorLabel.Content = "Select a category !";
+                    return;
+                }
+
+                // Close this window :
+                Close();
             }
-            
-            // Close this window :
-            Close();
         }
 
         private void CheatCheckBox_Checked(object sender, RoutedEventArgs e)
