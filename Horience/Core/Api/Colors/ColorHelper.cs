@@ -1,8 +1,8 @@
-using System;
+﻿using System;
 using System.Collections.Generic;
 using System.Windows.Media;
 
-namespace Horience.Core.Api
+namespace Horience.Core.Api.Colors
 {
     class ColorHelper
     {
@@ -72,7 +72,7 @@ namespace Horience.Core.Api
             return colorList;
         }
 
-        private int FindMaxValue(List<int> list)
+        public int FindMaxValue(List<int> list)
         {
             int MaxValue = 0;
 
@@ -84,7 +84,7 @@ namespace Horience.Core.Api
             return MaxValue;
         }
 
-        private Color convert(Brush from)
+        public Color BrushToColor(Brush from)
         {
             if (from is SolidColorBrush toColor)
             {
