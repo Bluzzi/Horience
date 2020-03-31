@@ -1,6 +1,7 @@
 ﻿using System;
-using System.Collections.Generic;
+using System.Diagnostics;
 using System.Threading;
+using System.Timers;
 using System.Windows;
 using System.Windows.Media;
 using Horience.Core;
@@ -9,6 +10,10 @@ namespace Horience
 {
     public partial class Injector : Window
     {
+        private System.Timers.Timer _timer = new System.Timers.Timer();
+        private int _timerElapsed = 0;
+        public static Panel created;
+
         public Injector()
         {
             InitializeComponent();
@@ -18,18 +23,25 @@ namespace Horience
 
         private void Inject(object sender, RoutedEventArgs e)
         {
+            //Hide Button:
+            InjectButton.Visibility = Visibility.Hidden;
             // Get checkbox values :
             bool CheatBoxIsChecked = CheatCheckBox.IsChecked ?? false;
             bool UtilsBoxIsChecked = UtilsCheckBox.IsChecked ?? false;
 
             // Minecraft Process
-            VAMemory memory = new VAMemory("Minecraft.Windows");
-
+            /**
+             *To Edit when dll is implemented in the code
+             */
+            //VAMemory memory = new VAMemory("Minecraft.Windows");
             // If Process = false = Minecraft Windows not open 
             // Otherwise, if Process = true, it's on.
-            if (memory.CheckProcess() == false)
+            //To put back when all good memory.CheckProcess() == false
+            if (false)
             {
                 ErrorLabel.Content = "You must start Minecraft before.";
+                //set the button back since injection failed
+                InjectButton.Visibility = Visibility.Visible;
                 return;
             }
             else
@@ -37,130 +49,69 @@ namespace Horience
                 // Check if a checkbox is checked and create Main instance with the mode :
                 if (CheatBoxIsChecked && UtilsBoxIsChecked)
                 {
+                    GenerateAnimation();
                     new Main((int)Main.MODES.ALL);
                 }
                 else if (CheatBoxIsChecked)
                 {
+                    GenerateAnimation();
                     new Main((int)Main.MODES.CHEAT);
                 }
                 else if (UtilsBoxIsChecked)
                 {
+                    GenerateAnimation();
                     new Main((int)Main.MODES.UTILS);
                 }
                 else
                 {
                     ErrorLabel.Content = "Select a category !";
+                    //set the button back since injection failed
+                    InjectButton.Visibility = Visibility.Visible;
                     return;
                 }
-
-                // Close this window :
-                Close();
             }
         }
 
+        private void GenerateAnimation()
+        {
+            _timer.Interval = 20;
+            _timer.Elapsed += ProgressTick;
+            _timer.AutoReset = true;
+            _timer.Start();
+        }
+
+        private void ProgressTick(object sender, System.Timers.ElapsedEventArgs e)
+        {
+                if (_timerElapsed > 100)
+                {
+                    _timer.Stop();
+                    Dispatcher.Invoke(() => {
+                        // Close this window :
+                        Close();
+
+                        // Show the panel window
+                        created.Show();
+                    });
+                }
+                else
+                {
+                    Dispatcher.Invoke(() => {
+                             InjectProgressBar.Value += 0.1;
+                    });
+                    _timerElapsed++;
+                } 
+        }
         private void CheatCheckBox_Checked(object sender, RoutedEventArgs e)
         {
-            Color toGo = Color.FromRgb(114, 18, 18);
+            Color color = Color.FromRgb(0, 185, 67);
+            CheatLabel.Foreground = new SolidColorBrush(color);
         }
 
         private void CheatCheckBox_Unchecked(object sender, RoutedEventArgs e)
         {
-            Color from = convert(CheatLabel.Foreground);
-            Color to = Color.FromRgb(114, 18, 18);
-            List<Color> colorList = GenerateGradientList(from, to);
-            foreach(Color color in colorList)
-            {
-                CheatCheckBox.Foreground = new SolidColorBrush(color);
-                Thread.Sleep(100);
-            }
+            Color color = Color.FromRgb(116, 20, 20);
+            CheatLabel.Foreground = new SolidColorBrush(color);
         }
 
-        private List<Color> GenerateGradientList(Color from, Color to)
-        {
-            List<int> Values = new List<int>();
-
-            int ToRMax = to.R;
-            int ToGMax = to.G;
-            int ToBMax = to.B;
-
-            int FromRMax = from.R;
-            int FromGMax = from.G;
-            int FromBMax = from.B;
-
-            Values.Add(ToRMax);
-            Values.Add(ToGMax);
-            Values.Add(ToBMax);
-
-            Values.Add(FromRMax);
-            Values.Add(FromGMax);
-            Values.Add(FromBMax);
-
-            List<Color> colorList = new List<Color>();
-
-            for (int i = 0; i < FindMaxValue(Values); i++)
-            {
-                if (FromRMax != ToRMax)
-                {
-                    if (FromRMax < ToRMax)
-                    {
-                        FromRMax++;
-                    }
-                    else
-                    {
-                        FromRMax--;
-                    }
-                }
-
-                if (FromGMax != ToGMax)
-                {
-                    if (FromGMax < ToGMax)
-                    {
-                        FromGMax++;
-                    }
-                    else
-                    {
-                        FromGMax--;
-                    }
-                }
-
-                if (FromBMax != ToBMax)
-                {
-                    if (FromBMax < ToBMax)
-                    {
-                        FromBMax++;
-                    }
-                    else
-                    {
-                        FromBMax--;
-                    }
-                }
-
-                colorList.Add(Color.FromRgb(Convert.ToByte(FromRMax), Convert.ToByte(FromGMax), Convert.ToByte(FromBMax)));
-            }
-
-            return colorList;
-        }
-
-        private int FindMaxValue(List<int> list)
-        {
-            int MaxValue = 0;
-
-            foreach(int val in list)
-            {
-                if (val > MaxValue) MaxValue = val;
-            }
-
-            return MaxValue;
-        }
-
-        private Color convert(Brush from)
-        {
-            if (from is SolidColorBrush toColor)
-            {
-                return toColor.Color;
-            }
-
-            return Color.FromRgb(0, 0, 0);
-        }
     }
 }

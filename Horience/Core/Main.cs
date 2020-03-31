@@ -29,8 +29,10 @@ namespace Horience.Core
                 Instance = this;
                 this.Mode = Mode;
 
-                // Open the panel :
-                (new Panel()).Show();
+                // Open the panel and set the created static variable in Injector:
+                Panel panel = new Panel();
+                panel.Hide();
+                Injector.created = panel;
             }
             else
             {

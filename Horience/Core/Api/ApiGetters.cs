@@ -2,9 +2,9 @@ namespace Horience.Core.Api
 {
     class ApiGetters
     {
-        public Color GetColor()
+        public ColorHelper GetColor()
         {
-            return new Color();
+            return new ColorHelper();
         }
     }
 }
