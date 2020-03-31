@@ -88,7 +88,6 @@ namespace Horience
                     Dispatcher.Invoke(() => {
                         // Close this window :
                         Close();
-
                         // Show the panel window
                         created.Show();
                     });
@@ -112,6 +111,5 @@ namespace Horience
             Color color = Color.FromRgb(116, 20, 20);
             CheatLabel.Foreground = new SolidColorBrush(color);
         }
-
     }
 }
