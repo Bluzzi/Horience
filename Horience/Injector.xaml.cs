@@ -1,6 +1,5 @@
 ﻿using System;
 using System.Collections.Generic;
-using System.Diagnostics;
 using System.Threading;
 using System.Windows;
 using System.Windows.Media;
@@ -23,12 +22,12 @@ namespace Horience
             bool CheatBoxIsChecked = CheatCheckBox.IsChecked ?? false;
             bool UtilsBoxIsChecked = UtilsCheckBox.IsChecked ?? false;
 
-            // Check if Minecraft Process is started
-            Process[] process = Process.GetProcessesByName("Minecraft.Windows"); // As I understand it, we'll be able to change the game's values with this.
+            // Minecraft Process
+            VAMemory memory = new VAMemory("Minecraft.Windows");
 
-            // If Process equals 0 = Minecraft Windows not open 
-            // Otherwise, if Process equals 1, it's on.
-            if (process.Length == 0)
+            // If Process = false = Minecraft Windows not open 
+            // Otherwise, if Process = true, it's on.
+            if (memory.CheckProcess() == false)
             {
                 ErrorLabel.Content = "You must start Minecraft before.";
                 return;
