@@ -43,10 +43,10 @@ namespace Horience.Core.Api.Memory
         const uint MEM_RESERVE = 0x00002000;
         const uint PAGE_READWRITE = 4;
 
-        public static Process GetProcessFromName()
+        public static Process GetProcessFromName(string name)
         {
-            Process[] names = Process.GetProcessesByName("Minecraft.Windows.exe");
-            if (names[0] == null) return new Process();
+            Process[] names = Process.GetProcessesByName(name);
+            if (names.Length <= 0)return new Process();
             return names[0];
         }
 

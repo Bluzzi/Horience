@@ -5,6 +5,7 @@ using System.Windows.Threading;
 using TimerSystem = System.Timers.Timer;
 using System.Windows;
 using System.Threading;
+using Horience.Core.Api.Memory;
 
 namespace Horience.Core
 {
