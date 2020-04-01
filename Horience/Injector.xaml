@@ -7,13 +7,15 @@
         mc:Ignorable="d"
         Title="Horience" Height="550" Width="450" WindowStyle="None" Padding="0,0,500,600" ResizeMode="NoResize" WindowStartupLocation="CenterScreen">
     <Grid Background="#FF23272A">
-        <Label x:Name="Title" Content="HORIENCE" HorizontalAlignment="Center" VerticalAlignment="Top" Margin="58,70,58.6,0" FontFamily="Calibri" FontSize="75" FontWeight="Bold" Foreground="White"/>
-        <Grid x:Name="Mode_selector" Margin="0,0,0,200" HorizontalAlignment="Center" VerticalAlignment="Bottom">
+        <Label Content="HORIENCE" HorizontalAlignment="Center" VerticalAlignment="Top" Margin="58,66,58.6,0" FontFamily="Calibri" FontSize="75" FontWeight="Bold" Foreground="White"/>
+        
+        <Grid Margin="65,0,64.6,204.4" HorizontalAlignment="Center" VerticalAlignment="Bottom">
             <Button x:Name="CheatButton" Content="CHEAT" HorizontalAlignment="Center" Margin="0,0,0,75" VerticalAlignment="Bottom" Width="320" Height="50" BorderBrush="{x:Null}" Background="#FFFF5555" FontSize="35" FontWeight="Bold" FontFamily="Calibri" Click="ButtonCheat"/>
             <Button x:Name="UtilsButton" Content="UTILS" HorizontalAlignment="Center" VerticalAlignment="Bottom" Width="320" Height="50" BorderBrush="{x:Null}" Background="#FFFF5555" FontSize="35" FontWeight="Bold" FontFamily="Calibri" Click="ButtonUtils"/>
         </Grid>
 
-        <Grid x:Name="Buttun_injector" Margin="0,0,0,100" HorizontalAlignment="Center" VerticalAlignment="Bottom">
+        <Label x:Name="Error" Content="" Margin="0,450,0,0" VerticalAlignment="Top" HorizontalContentAlignment="Center" Background="{x:Null}" Foreground="#FFFF5555" FontFamily="Calibri" FontSize="20" FontWeight="Bold" HorizontalAlignment="Center" Width="450"/>
+        <Grid Margin="65,0,64.6,104.4" HorizontalAlignment="Center" VerticalAlignment="Bottom">
             <ProgressBar x:Name="InjectProgressBar" Height="50" Width="320" Background="#FFBDBCBC" Foreground="#FF55FF55" Maximum="10" HorizontalAlignment="Center" BorderBrush="{x:Null}"/>
             <Button x:Name="InjectButton" Content="INJECT" Height="50" Width="320" FontSize="35" Background="{x:Null}" HorizontalAlignment="Center" FontFamily="Calibri" FontWeight="Bold" VerticalAlignment="Bottom" BorderBrush="#FFAAAAAA" Click="Inject"/>
         </Grid>

@@ -1,4 +1,6 @@
-﻿using System.Windows;
+﻿using System.Diagnostics;
+using System.Media;
+using System.Windows;
 using System.Windows.Media;
 using Horience.Core;
 using Horience.Core.Api.Colors;
@@ -43,12 +45,17 @@ namespace Horience
             // Check if no mode selected :
             if (!Cheat && !Utils)
             {
-                //TODO: error...
+                DisplayError("You must be select a mode");
                 return;
-            } else
-            {
-                InjectButton.Visibility = Visibility.Hidden;
             }
+
+            if (Process.GetProcessesByName("Minecraft.Windows").Length == 0)
+            {
+                DisplayError("You must launch Minecraft");
+                return;
+            }
+
+            InjectButton.Visibility = Visibility.Hidden;
 
             // Call loadPanel method with mode selected :
             if (Cheat && Utils)
@@ -64,6 +71,8 @@ namespace Horience
                 StartLoadingPanel((int)Main.MODES.UTILS);
             }
         }
+
+        // Panel loader :
 
         private TimerSystem Timer = new TimerSystem();
         private int TimerElapsed = 0;
@@ -101,7 +110,37 @@ namespace Horience
                 });
 
                 TimerElapsed++;
-            } 
-        }       
+            }
+        }
+
+        // Error message :
+
+        private TimerSystem ErrorTimer = new TimerSystem();
+
+        private void DisplayError(string ErrorMessage)
+        {
+            // Set error message :
+            Error.Content = ErrorMessage;
+
+            // Play window error sound :
+            SystemSounds.Beep.Play();
+
+            // Start delayed timer for hide error :
+            ErrorTimer.Interval = 1000 * 5;
+            ErrorTimer.Elapsed += HideError;
+            ErrorTimer.AutoReset = false;
+
+            ErrorTimer.Start();
+        }
+
+        private void HideError(object sender, System.Timers.ElapsedEventArgs e)
+        {
+            Dispatcher.Invoke(() =>
+            {
+                Error.Content = "";
+            });
+
+            ErrorTimer.Stop();
+        }
     }
 }
