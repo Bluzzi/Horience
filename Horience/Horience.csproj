@@ -77,7 +77,7 @@
     <Compile Include="Core\Api\ApiGetters.cs" />
     <Compile Include="Core\Api\Colors\ColorConstants.cs" />
     <Compile Include="Core\Api\Colors\ColorHelper.cs" />
-    <Compile Include="Core\Api\MemoryEditor.cs" />
+    <Compile Include="Core\Api\Memory\MemoryEditor.cs" />
     <Compile Include="Info.cs" />
     <Compile Include="Core\Main.cs" />
     <Compile Include="Core\Panel.xaml.cs">
