@@ -2,96 +2,106 @@
 using System.Windows.Media;
 using Horience.Core;
 using Horience.Core.Api.Colors;
+using TimerSystem = System.Timers.Timer;
 
 namespace Horience
 {
     public partial class Injector : Window
     {
-        private System.Timers.Timer _timer = new System.Timers.Timer();
-        private int _timerElapsed = 0;
-        public static Panel created;
-
         public Injector()
         {
             InitializeComponent();
+        }
+
+        // Button for enable or disable cheat and utils mode :
+
+        private bool Cheat = false;
+        private bool Utils = false;
+
+        private void ButtonCheat(object sender, RoutedEventArgs e)
+        {
+            if(TimerElapsed < 1)
+            {
+                Cheat = !Cheat;
+                CheatButton.Background = Cheat ? new SolidColorBrush(ColorConstants.GREEN) : new SolidColorBrush(ColorConstants.RED);
+            }
+        }
+
+        private void ButtonUtils(object sender, RoutedEventArgs e)
+        {
+            if(TimerElapsed < 1)
+            {
+                Utils = !Utils;
+                UtilsButton.Background = Utils ? new SolidColorBrush(ColorConstants.GREEN) : new SolidColorBrush(ColorConstants.RED);
+            }
         }
 
         // Inject the cheat, this close injector window and open the panel with specified mode :
 
         private void Inject(object sender, RoutedEventArgs e)
         {
-            //Hide Button:
-            InjectButton.Visibility = Visibility.Hidden;
-            // Get checkbox values :
-            bool CheatBoxIsChecked = CheatCheckBox.IsChecked ?? false;
-            bool UtilsBoxIsChecked = UtilsCheckBox.IsChecked ?? false;
-
-            // Check if a checkbox is checked and create Main instance with the mode :
-            if (CheatBoxIsChecked && UtilsBoxIsChecked)
+            // Check if no mode selected :
+            if (!Cheat && !Utils)
             {
-                GenerateAnimation();
-                new Main((int)Main.MODES.ALL);
-            }
-            else if (CheatBoxIsChecked)
-            {
-                GenerateAnimation();
-                new Main((int)Main.MODES.CHEAT);
-            }
-            else if (UtilsBoxIsChecked)
-            {
-                GenerateAnimation();
-                new Main((int)Main.MODES.UTILS);
-            }
-            else
-            {
-                ErrorLabel.Content = "Select a category !";
-                //set the button back since injection failed
-                InjectButton.Visibility = Visibility.Visible;
+                //TODO: error...
                 return;
+            } else
+            {
+                InjectButton.Visibility = Visibility.Hidden;
+            }
+
+            // Call loadPanel method with mode selected :
+            if (Cheat && Utils)
+            {
+                StartLoadingPanel((int)Main.MODES.ALL);
+            }
+            else if (Cheat)
+            {
+                StartLoadingPanel((int)Main.MODES.CHEAT);
+            }
+            else if (Utils)
+            {
+                StartLoadingPanel((int)Main.MODES.UTILS);
             }
         }
 
+        private TimerSystem Timer = new TimerSystem();
+        private int TimerElapsed = 0;
 
+        private int Mode;
 
-
-
-        private void GenerateAnimation()
+        private void StartLoadingPanel(int Mode)
         {
-            _timer.Interval = 20;
-            _timer.Elapsed += ProgressTick;
-            _timer.AutoReset = true;
-            _timer.Start();
+            this.Mode = Mode;
+
+            Timer.Interval = 20;
+            Timer.Elapsed += LoadingPanel;
+            Timer.AutoReset = true;
+
+            Timer.Start();
         }
 
-        private void ProgressTick(object sender, System.Timers.ElapsedEventArgs e)
+        private void LoadingPanel(object sender, System.Timers.ElapsedEventArgs e)
         {
-            if (_timerElapsed > 100)
+            if (TimerElapsed > 100)
             {
-                _timer.Stop();
+                Timer.Stop();
+
                 Dispatcher.Invoke(() => {
-                    // Close this window :
+                    // Close this window and open the panel :
+                    new Main(Mode);
+
                     Close();
-                    // Show the panel window
-                    created.Show();
                 });
             }
             else
             {
                 Dispatcher.Invoke(() => {
-                            InjectProgressBar.Value += 0.1;
+                    InjectProgressBar.Value += 0.1;
                 });
-                _timerElapsed++;
+
+                TimerElapsed++;
             } 
-        }
-
-        private void CheatCheckBox_Checked(object sender, RoutedEventArgs e)
-        {
-            CheatLabel.Foreground = new SolidColorBrush(ColorConstants.GREEN);
-        }
-
-        private void CheatCheckBox_Unchecked(object sender, RoutedEventArgs e)
-        {
-            CheatLabel.Foreground = new SolidColorBrush(ColorConstants.RED);
-        }
+        }       
     }
 }
