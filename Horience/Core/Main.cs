@@ -13,6 +13,7 @@ namespace Horience.Core
         }
 
         private static Main Instance;
+        private Panel PanelInstance;
 
         private readonly int Mode;
 
@@ -30,7 +31,9 @@ namespace Horience.Core
                 this.Mode = Mode;
 
                 // Open the panel and set the created static variable in Injector:
-                (new Panel()).Show();
+                PanelInstance = new Panel();
+
+                PanelInstance.Show();
             }
             else
             {
@@ -43,6 +46,11 @@ namespace Horience.Core
         public static Main GetInstance()
         {
             return Instance;
+        }
+
+        public Panel GetPanel()
+        {
+            return PanelInstance;
         }
 
         public ApiGetters GetApi()
