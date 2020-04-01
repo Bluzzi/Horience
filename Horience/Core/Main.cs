@@ -18,7 +18,7 @@ namespace Horience.Core
 
         public Main(int Mode)
         {
-            if(!Enum.IsDefined(typeof(MODES), (object) Mode))
+            if (!Enum.IsDefined(typeof(MODES), (object) Mode))
             {
                 throw new Exception("Invalid mode, don't use magic number");
             }
@@ -30,9 +30,7 @@ namespace Horience.Core
                 this.Mode = Mode;
 
                 // Open the panel and set the created static variable in Injector:
-                Panel panel = new Panel();
-                panel.Hide();
-                Injector.created = panel;
+                (new Panel()).Show();
             }
             else
             {
