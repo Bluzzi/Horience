@@ -6,9 +6,23 @@
         xmlns:local="clr-namespace:Horience"
         mc:Ignorable="d"
         Title="Horience" Height="550" Width="450" WindowStyle="None" Padding="0,0,500,600" ResizeMode="NoResize" WindowStartupLocation="CenterScreen">
+    <Window.Resources> 
+        <!-- Rewrite this -->
+        <Style TargetType="{x:Type Button}">
+            <Setter Property="Template">
+                <Setter.Value>
+                    <ControlTemplate TargetType="{x:Type Button}">
+                        <Border Background="{TemplateBinding Background}">
+                            <ContentPresenter HorizontalAlignment="Center" VerticalAlignment="Center"/>
+                        </Border>
+                    </ControlTemplate>
+                </Setter.Value>
+            </Setter>
+        </Style>
+    </Window.Resources>
     <Grid Background="#FF23272A">
         <Label Content="HORIENCE" HorizontalAlignment="Center" VerticalAlignment="Top" Margin="58,66,58.6,0" FontFamily="Calibri" FontSize="75" FontWeight="Bold" Foreground="White"/>
-        
+
         <Grid Margin="65,0,64.6,204.4" HorizontalAlignment="Center" VerticalAlignment="Bottom">
             <Button x:Name="CheatButton" Content="CHEAT" HorizontalAlignment="Center" Margin="0,0,0,75" VerticalAlignment="Bottom" Width="320" Height="50" BorderBrush="{x:Null}" Background="#FFFF5555" FontSize="35" FontWeight="Bold" FontFamily="Calibri" Click="ButtonCheat"/>
             <Button x:Name="UtilsButton" Content="UTILS" HorizontalAlignment="Center" VerticalAlignment="Bottom" Width="320" Height="50" BorderBrush="{x:Null}" Background="#FFFF5555" FontSize="35" FontWeight="Bold" FontFamily="Calibri" Click="ButtonUtils"/>
