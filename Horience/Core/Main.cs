@@ -1,11 +1,9 @@
 ﻿using System;
 using System.Diagnostics;
 using Horience.Core.Api;
-using System.Windows.Threading;
 using TimerSystem = System.Timers.Timer;
 using System.Windows;
 using System.Threading;
-using Horience.Core.Api.Memory;
 
 namespace Horience.Core
 {
@@ -19,15 +17,15 @@ namespace Horience.Core
         }
 
         private static Main Instance;
-        private Panel PanelInstance;
+        private readonly Panel PanelInstance;
 
         private readonly int Mode;
 
-        private TimerSystem Timer = new TimerSystem();
+        private readonly TimerSystem Timer = new TimerSystem();
 
         public Main(int Mode)
         {
-            if (!Enum.IsDefined(typeof(MODES), (object) Mode))
+            if (!Enum.IsDefined(typeof(MODES), (object)Mode))
             {
                 throw new Exception("Invalid mode, don't use magic number");
             }
@@ -81,18 +79,18 @@ namespace Horience.Core
 
         private void Running(object sender, System.Timers.ElapsedEventArgs e)
         {
-            Debug.WriteLine("isRunning");
-
             // Check if Minecraft is running :
             if (Process.GetProcessesByName("Minecraft.Windows").Length == 0)
             {
                 Application.Current.Dispatcher.Invoke(() =>
                 {
-                    Debug.WriteLine("MinecraftIsStopped");
-                    Main.GetInstance().GetPanel().Close();
-                });  
+                    Process.GetCurrentProcess().Kill();
+                });
+
                 return;
             }
+
+            //TODO...
         }
     }
 }
