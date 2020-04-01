@@ -1,5 +1,4 @@
 using Horience.Core.Api.Colors;
-using Horience.Core.Api.Memory;
 
 namespace Horience.Core.Api
 {
@@ -10,9 +9,9 @@ namespace Horience.Core.Api
             return new ColorHelper();
         }
 
-        public MemoryEditor GetMemoryEditor()
+        public Memory.Memory GetMemory(string ProcessName)
         {
-            return new MemoryEditor();
+            return new Memory.Memory(ProcessName);
         }
     }
 }
