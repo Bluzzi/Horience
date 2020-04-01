@@ -65,6 +65,8 @@ namespace Horience
             }
         }
 
+        // Panel loader :
+
         private TimerSystem Timer = new TimerSystem();
         private int TimerElapsed = 0;
 
@@ -101,7 +103,37 @@ namespace Horience
                 });
 
                 TimerElapsed++;
-            } 
-        }       
+            }
+        }
+
+        // Error message :
+
+        private TimerSystem ErrorTimer = new TimerSystem();
+
+        private void DisplayError(string ErrorMessage)
+        {
+            // Set error message :
+            Error.Content = ErrorMessage;
+
+            // Play window error sound :
+            SystemSounds.Beep.Play();
+
+            // Start delayed timer for hide error :
+            ErrorTimer.Interval = 1000 * 5;
+            ErrorTimer.Elapsed += HideError;
+            ErrorTimer.AutoReset = false;
+
+            ErrorTimer.Start();
+        }
+
+        private void HideError(object sender, System.Timers.ElapsedEventArgs e)
+        {
+            Dispatcher.Invoke(() =>
+            {
+                Error.Content = "";
+            });
+
+            ErrorTimer.Stop();
+        }
     }
 }
