@@ -74,7 +74,7 @@ namespace Horience
 
         // Panel loader :
 
-        private TimerSystem Timer = new TimerSystem();
+        private readonly TimerSystem Timer = new TimerSystem();
         private int TimerElapsed = 0;
 
         private int Mode;
@@ -115,7 +115,7 @@ namespace Horience
 
         // Error message :
 
-        private TimerSystem ErrorTimer = new TimerSystem();
+        private readonly TimerSystem ErrorTimer = new TimerSystem();
 
         private void DisplayError(string ErrorMessage)
         {
