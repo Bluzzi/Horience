@@ -3,6 +3,8 @@ using System.Diagnostics;
 using Horience.Core.Api;
 using System.Windows.Threading;
 using TimerSystem = System.Timers.Timer;
+using System.Windows;
+using System.Threading;
 
 namespace Horience.Core
 {
@@ -44,7 +46,6 @@ namespace Horience.Core
 
                 // Open the panel and set the created static variable in Injector:
                 PanelInstance = new Panel();
-
                 PanelInstance.Show();
             }
             else
@@ -84,8 +85,11 @@ namespace Horience.Core
             // Check if Minecraft is running :
             if (Process.GetProcessesByName("Minecraft.Windows").Length == 0)
             {
-                Main.GetInstance().GetPanel().Close();
-                Debug.WriteLine("MinecraftIsStopped");
+                Application.Current.Dispatcher.Invoke(() =>
+                {
+                    Debug.WriteLine("MinecraftIsStopped");
+                    Main.GetInstance().GetPanel().Close();
+                });  
                 return;
             }
         }
