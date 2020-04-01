@@ -1,4 +1,6 @@
-﻿using System.Windows;
+﻿using System.Diagnostics;
+using System.Media;
+using System.Windows;
 using System.Windows.Media;
 using Horience.Core;
 using Horience.Core.Api.Colors;
@@ -43,12 +45,17 @@ namespace Horience
             // Check if no mode selected :
             if (!Cheat && !Utils)
             {
-                //TODO: error...
+                DisplayError("You must be select a mode");
                 return;
-            } else
-            {
-                InjectButton.Visibility = Visibility.Hidden;
             }
+
+            if (Process.GetProcessesByName("Minecraft.Windows").Length == 0)
+            {
+                DisplayError("You must launch Minecraft");
+                return;
+            }
+
+            InjectButton.Visibility = Visibility.Hidden;
 
             // Call loadPanel method with mode selected :
             if (Cheat && Utils)
