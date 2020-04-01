@@ -5,8 +5,25 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:Horience.Core"
         mc:Ignorable="d"
-        Title="Horience" Height="450" Width="800" FontFamily="Calibri">
-    <Grid>
-        
+        Title="Horience" 
+        Height="1080" 
+        Width="1920" 
+        FontFamily="Calibri" 
+        WindowStartupLocation="CenterScreen" 
+        WindowState="Maximized">
+    <Window.Resources>
+        <Style TargetType="Button">
+            <Setter Property="Height" Value="60"/>
+            <Setter Property="HorizontalContentAlignment" Value="Center"/>
+            <Setter Property="FontSize" Value="15"/>
+            <Setter Property="FontWeight" Value="Bold"/>
+            <Setter Property="Foreground" Value="White"/>
+            <Setter Property="Background" Value="#FF2C2F33"/>
+            <Setter Property="BorderBrush" Value="{x:Null}"/>
+            <Setter Property="BorderThickness" Value="2"/>
+        </Style>
+    </Window.Resources>
+    <Grid Background="#FF23272A">
+        <StackPanel x:Name="Category" HorizontalAlignment="Left" Margin="10,10,0,0" Width="200" Height="1050" VerticalAlignment="Top"/>
     </Grid>
 </Window>
