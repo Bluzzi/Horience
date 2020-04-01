@@ -5,7 +5,7 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:Horience.Core"
         mc:Ignorable="d"
-        Title="Panel" Height="450" Width="800">
+        Title="Horience" Height="450" Width="800" FontFamily="Calibri">
     <Grid>
         
     </Grid>
