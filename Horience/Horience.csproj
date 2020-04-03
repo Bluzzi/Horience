@@ -74,6 +74,7 @@
     <Compile Include="Core\Api\ApiGetters.cs" />
     <Compile Include="Core\Api\Colors\ColorConstants.cs" />
     <Compile Include="Core\Api\Colors\ColorHelper.cs" />
+    <Compile Include="Core\Api\Link\DllLink.cs" />
     <Compile Include="Core\Api\Memory\Editable\Property.cs" />
     <Compile Include="Core\Api\Memory\Memory.cs" />
     <Compile Include="Core\Api\Memory\MemoryBase.cs" />
