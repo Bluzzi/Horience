@@ -22,7 +22,7 @@ namespace Horience
 
         private void ButtonCheat(object sender, RoutedEventArgs e)
         {
-            if(TimerElapsed < 1)
+            if (TimerElapsed < 1)
             {
                 Cheat = !Cheat;
                 CheatButton.Background = Cheat ? new SolidColorBrush(ColorConstants.GREEN) : new SolidColorBrush(ColorConstants.RED);
@@ -45,7 +45,7 @@ namespace Horience
             // Check if no mode selected :
             if (!Cheat && !Utils)
             {
-                DisplayError("You must be select a mode");
+                DisplayError("You must select a mode");
                 return;
             }
 
