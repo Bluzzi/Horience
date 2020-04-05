@@ -13,8 +13,10 @@ namespace Horience.Core.Api.Link
 
         private string MessageReceived;
         private string LastMessageReceived;
+        public bool IsConnected;
 
         private NamedPipeServerStream pipeStream;
+        private StreamReader StreamReader;
 
         public void setupLink()
         {
@@ -23,27 +25,32 @@ namespace Horience.Core.Api.Link
             {
                 pipeStream = pipeServer;
                 pipeServer.WaitForConnection();
-                try
-                {
-                    using (StreamReader sr = new StreamReader(pipeServer))
-                    {
-                        string temp;
-                        while ((temp = sr.ReadLine() + sr.ReadLine()) != null)
+                IsConnected = true;
+                StreamReader = new StreamReader(pipeServer);
+            }
+            
+        }
+
+        public void CheckForUpdates()
+        {
+            try
+            {
+                  string temp;
+                  while ((temp = StreamReader.ReadLine()) != null)
+                  {
+                        List<string> output = new List<string>();
+                        while (StreamReader.Peek() >= 0)
                         {
-                            MessageReceived = temp;
-                            while (sr.Peek() >= 0)
-                            {
-                               // Debug.Write((char)sr.Read());
-                            }
+                            char character = (char)StreamReader.Read();
+                            output.Add(character.ToString());
+
                         }
+                        MessageReceived = string.Join("", output.ToArray());
                     }
-                }
-                // Catch the IOException that is raised if the pipe is broken
-                // or disconnected.
-                catch (IOException e)
-                {
-                    throw e;
-                }
+            }
+            catch (IOException e)
+            {
+                throw e;
             }
         }
 
