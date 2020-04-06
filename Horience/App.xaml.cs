@@ -13,9 +13,7 @@ namespace Horience
             }
             else
             {
-                Injector Window = new Injector();
-
-                Window.Show();
+                (new Injector()).Show();
             }
         }
     }
