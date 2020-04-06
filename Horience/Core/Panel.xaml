@@ -3,14 +3,17 @@
         xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
         xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
-        xmlns:local="clr-namespace:Horience.Core"
         mc:Ignorable="d"
         Title="Horience" 
         Height="1080" 
         Width="1920" 
         FontFamily="Calibri" 
         WindowStartupLocation="CenterScreen" 
-        WindowState="Maximized">
+        WindowState="Maximized"
+        BorderBrush="#FFFFFFFF"
+        SizeChanged="ChangeSize"
+        MinHeight="600"
+        MinWidth="1100">
     <Window.Resources>
         <Style TargetType="Button">
             <Setter Property="Height" Value="60"/>
@@ -21,9 +24,61 @@
             <Setter Property="Background" Value="#FF2C2F33"/>
             <Setter Property="BorderBrush" Value="{x:Null}"/>
             <Setter Property="BorderThickness" Value="2"/>
+            <!-- TODO : Remove hover animation -->
         </Style>
     </Window.Resources>
     <Grid Background="#FF23272A">
-        <StackPanel x:Name="Category" HorizontalAlignment="Left" Margin="10,10,0,0" Width="200" Height="1050" VerticalAlignment="Top"/>
+        <!-- Base column definitions -->
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="0.14*"/>
+            <ColumnDefinition Width="*"/>
+        </Grid.ColumnDefinitions>
+
+        <!-- Category selector column -->
+        <ScrollViewer VerticalScrollBarVisibility="Hidden">
+            <!-- Manual definition in the code for x:Name "Category" -->
+            <StackPanel x:Name="Category" Grid.Column="0"/>
+        </ScrollViewer>
+
+        <!-- Chat and cheat/utils selector -->
+        <Grid Grid.Column="1">
+            <Grid.RowDefinitions>
+                <RowDefinition/>
+                <RowDefinition Height="Auto"/>
+            </Grid.RowDefinitions>
+
+            <StackPanel Grid.Row="0" VerticalAlignment="Bottom">
+                <!-- Chat display -->
+                <Label Margin="25,0,0,0" FontSize="20" Foreground="White">Rateek : Salut</Label>
+                <Label Margin="25,0,0,0" FontSize="20" Foreground="White">Bluzzi : Hello comment ça va ?</Label>
+                <Label Margin="25,0,0,0" FontSize="20" Foreground="White">Rateek : Bien.</Label>
+            </StackPanel>
+
+            <Grid Grid.Row="0" Panel.ZIndex="1">
+                <!-- Cheat/Utils selector -->
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="0.17*"/>
+                    <ColumnDefinition Width="*"/>
+                </Grid.ColumnDefinitions>
+
+                <ScrollViewer Grid.Column="0" VerticalScrollBarVisibility="Hidden">
+                    <!-- Manual definition in the code for x:Name "CheatAndUtils" -->
+                    <StackPanel x:Name="CheatAndUtils"/>
+                </ScrollViewer>
+            </Grid>
+
+            <Grid Grid.Row="1">
+                <!-- Chat text box and send button -->
+                <Grid>
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition Width="*"/>
+                        <ColumnDefinition Width="0.1*"/>
+                    </Grid.ColumnDefinitions>
+
+                    <TextBox Grid.Column="0" Margin="15" VerticalContentAlignment="Center" FontSize="20" Padding="20,0,20,0">Test</TextBox>
+                    <Button Grid.Column="1" Margin="10">Send</Button>
+                </Grid>
+            </Grid>
+        </Grid>
     </Grid>
 </Window>
