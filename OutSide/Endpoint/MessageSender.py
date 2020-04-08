@@ -29,6 +29,6 @@ class MessageSender(threading.Thread):
                 print(getDate() + " {0} is disconnected".format(self.ip))
                 connectedIPs.remove(self.ip)
 
-        print(sender.recv(2000).decode("Utf8"))
-        sender.send(self.message.encode("Utf8"))
-        sender.close()
+        if sender.recv(2000).decode("Utf8") == "ok":
+            sender.send(self.message.encode("Utf8"))
+            sender.close()

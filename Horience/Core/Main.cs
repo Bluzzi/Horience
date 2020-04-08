@@ -4,6 +4,7 @@ using Horience.Core.Api;
 using TimerSystem = System.Timers.Timer;
 using System.Windows;
 using System.Threading;
+using Horience.Core.Chat;
 
 namespace Horience.Core
 {
@@ -86,7 +87,10 @@ namespace Horience.Core
 
         private void Running(object sender, System.Timers.ElapsedEventArgs e)
         {
-            if (Application.Current == null) return;
+            if (Application.Current == null)
+            {
+                //Listener.ListenerThread.Abort();
+            }
 
             // Check if Minecraft is running :
             if (Process.GetProcessesByName("Minecraft.Windows").Length == 0)

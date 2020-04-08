@@ -25,13 +25,7 @@ namespace Horience.Core.Chat
 
         public void StartListener()
         {
-<<<<<<< Updated upstream
-            IPAddress iP = Dns.GetHostAddresses("symp.fr")[0];
-            TcpListener Listener = new TcpListener(IPAddress.Any, 1070);
-=======
-            IPAddress iPAddress = Dns.GetHostAddresses("symp.fr")[0];
-            TcpListener Listener = new TcpListener(iPAddress, 1070);
->>>>>>> Stashed changes
+            TcpListener Listener = new TcpListener(IPAddress.Parse("127.0.0.1"), 1070);
 
             Listener.Start();
             Byte[] bytes = new Byte[256];
