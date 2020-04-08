@@ -1,3 +1,5 @@
+# coding: utf8
+
 import socket
 
 HOST = "symp.fr"
@@ -8,11 +10,11 @@ connexion = socket.socket(socket.AF_INET, socket.SOCK_STREAM)
 try:
     connexion.connect((HOST, PORT))
 except socket.error:
-    print("Connection error...")
+    print("Connexion error...")
     exit()
 
-print("Connection successful !")
+print("Connexion successful !")
 
-connexion.send("messages".encode("Utf8"))
+connexion.send("sendMessage/-/Salut".encode("Utf8"))
 
-print(connexion.recv(2000).decode("Utf8"))
+print(connexion.recv(1028).decode("Utf8"))

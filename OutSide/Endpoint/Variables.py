@@ -1,0 +1,2 @@
+messagesHistory = []
+connectedIPs = []
