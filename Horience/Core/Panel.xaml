@@ -36,7 +36,7 @@
         <!-- Category selector column -->
         <ScrollViewer VerticalScrollBarVisibility="Hidden">
             <!-- Manual definition in the code for x:Name "Category" -->
-            <StackPanel x:Name="Category" Grid.Column="0"/>
+            <StackPanel x:Name="Selector" Grid.Column="0"/>
         </ScrollViewer>
 
         <!-- Chat and cheat/utils selector -->
@@ -47,20 +47,37 @@
             </Grid.RowDefinitions>
 
             <!-- Chat display -->
-            <StackPanel x:Name="Chat" Grid.Row="0" VerticalAlignment="Bottom"/>
+            <ScrollViewer>
+                <StackPanel x:Name="Chat" Grid.Row="0" VerticalAlignment="Bottom"/>
+            </ScrollViewer>
 
-            <Grid Grid.Row="0" Panel.ZIndex="1">
-                <!-- Cheat/Utils selector -->
-                <Grid.ColumnDefinitions>
-                    <ColumnDefinition Width="0.17*"/>
-                    <ColumnDefinition Width="*"/>
-                </Grid.ColumnDefinitions>
-
-                <ScrollViewer Grid.Column="0" VerticalScrollBarVisibility="Hidden">
-                    <!-- Manual definition in the code for x:Name "CheatAndUtils" -->
-                    <StackPanel x:Name="CheatAndUtils"/>
-                </ScrollViewer>
-            </Grid>
+            <!-- Manual definition in the code for x:Name "CheatAndUtils" -->
+            <WrapPanel x:Name="CheatAndUtils" Grid.Row="0" Panel.ZIndex="1">
+                <!--<Button Background="#55FF55" Padding="50,0">X RAY</Button>
+                <Button Background="#55FF55" Padding="50,0">AIMBOT</Button>
+                <Button Background="#55FF55" Padding="50,0">AUTO CLICK</Button>
+                <Button Background="#55FF55" Padding="50,0">SPEED</Button>
+                <Button Background="#55FF55" Padding="50,0">X RAY</Button>
+                <Button Background="#55FF55" Padding="50,0">AIMBOT</Button>
+                <Button Background="#55FF55" Padding="50,0">AUTO CLICK</Button>
+                <Button Background="#55FF55" Padding="50,0">SPEED</Button>
+                <Button Background="#55FF55" Padding="50,0">X RAY</Button>
+                <Button Background="#55FF55" Padding="50,0">AIMBOT</Button>
+                <Button Background="#FF5555" Padding="50,0">AUTO CLICK</Button>
+                <Button Background="#55FF55" Padding="50,0">SPEED</Button>
+                <Button Background="#55FF55" Padding="50,0">X RAY</Button>
+                <Button Background="#FF5555" Padding="50,0">AIMBOT</Button>
+                <Button Background="#55FF55" Padding="50,0">AUTO CLICK</Button>
+                <Button Background="#55FF55" Padding="50,0">SPEED</Button>
+                <Button Background="#55FF55" Padding="50,0">X RAY</Button>
+                <Button Background="#FF5555" Padding="50,0">AIMBOT</Button>
+                <Button Background="#55FF55" Padding="50,0">AUTO CLICK</Button>
+                <Button Background="#55FF55" Padding="50,0">SPEED</Button>
+                <Button Background="#55FF55" Padding="50,0">X RAY</Button>
+                <Button Background="#55FF55" Padding="50,0">AIMBOT</Button>
+                <Button Background="#FF5555" Padding="50,0">AUTO CLICK</Button>
+                <Button Background="#55FF55" Padding="50,0">SPEED</Button>-->
+            </WrapPanel>
 
             <Grid Grid.Row="1">
                 <!-- Chat text box and send button -->
@@ -70,8 +87,8 @@
                         <ColumnDefinition Width="0.1*"/>
                     </Grid.ColumnDefinitions>
 
-                    <TextBox Grid.Column="0" VerticalContentAlignment="Center" Background="#40444B" FontSize="20" Margin="10" Padding="20,0,20,0">Test</TextBox>
-                    <Button Grid.Column="1" Margin="10">Send</Button>
+                    <TextBox Grid.Column="0" x:Name="TextZone" Foreground="White" VerticalContentAlignment="Center" Background="#40444B" FontSize="20" Margin="15" Padding="20,0,20,0" KeyDown="SendKeyDown"/>
+                    <Button Grid.Column="1" Margin="10" Click="OnSendClick">Send</Button>
                 </Grid>
             </Grid>
         </Grid>
