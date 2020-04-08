@@ -7,11 +7,14 @@ namespace Horience.Core
 {
     public partial class Panel : Window
     {
+        private Chat ChatUI;
+
         public Panel()
         {
             InitializeComponent();
 
             for(int tgm = 0; tgm < 25; tgm++)
+            ChatUI = new Chat(Chat);
             {
                 Button category = new Button
                 {
@@ -28,6 +31,13 @@ namespace Horience.Core
         private void OnClickButton(object sender, RoutedEventArgs e)
         {
             ((Button)sender).Content = new Random().Next(1, 10).ToString();
+        }
+
+        // UI Getters :
+
+        private Chat GetChat()
+        {
+            return ChatUI;
         }
 
         private void ChangeSize(object sender, SizeChangedEventArgs e)
