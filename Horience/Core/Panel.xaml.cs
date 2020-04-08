@@ -2,6 +2,7 @@
 using System;
 using System.Collections.Generic;
 using System.Diagnostics;
+using System.Media;
 using System.Windows;
 using System.Windows.Controls;
 
@@ -9,7 +10,7 @@ namespace Horience.Core
 {
     public partial class Panel : Window
     {
-        private Chat ChatUI;
+        private readonly Chat ChatUI;
 
         private Dictionary<string, string[]> Categories = new Dictionary<string, string[]>();
 
@@ -19,12 +20,12 @@ namespace Horience.Core
 
             ChatUI = new Chat(Chat);
 
-            Categories.Add("World", new string[] { "test", "other test" });
-            Categories.Add("Combat", new string[] { "test", "other test" });
-            Categories.Add("Macro", new string[] { "test", "other test" });
-            Categories.Add("Utility", new string[] { "test", "other test" });
-            Categories.Add("Render", new string[] { "test", "other test" });
-            Categories.Add("Blatant", new string[] { "test", "other test" });
+            Categories.Add("WORLD", new string[] { "test", "other test" });
+            Categories.Add("COMBAT", new string[] { "test", "other test" });
+            Categories.Add("MACRO", new string[] { "test", "other test" });
+            Categories.Add("UTILITY", new string[] { "test", "other test" });
+            Categories.Add("RENDER", new string[] { "test", "other test" });
+            Categories.Add("BLATANT", new string[] { "test", "other test" });
 
             foreach (var CategoryInfo in Categories)
             {
@@ -34,22 +35,45 @@ namespace Horience.Core
                     Content = CategoryInfo.Key.ToString()
                 };
 
-                category.Click += OnClickButton;
+                category.Click += OnSelectorClick;
 
-                Category.Children.Add(category);
+                Selector.Children.Add(category);
             }
-        }
-
-        private void OnClickButton(object sender, RoutedEventArgs e)
-        {
-            Debug.WriteLine(String.Join(" ", Categories[((Button)sender).Content.ToString()]));
         }
 
         // UI Getters :
 
-        private Chat GetChat()
+        public Chat GetChat()
         {
             return ChatUI;
+        }
+
+        // Cheat or Utils selector :
+
+        private void OnSelectorClick(object sender, RoutedEventArgs e)
+        {
+            Debug.WriteLine(String.Join(" ", Categories[((Button)sender).Content.ToString()]));
+        }
+
+        // Message text box manager :
+
+        private void OnSendClick(object sender, RoutedEventArgs e)
+        {
+            SendMessage();
+        }
+
+        private void SendKeyDown(object sender, System.Windows.Input.KeyEventArgs e)
+        {
+            if (e.Key.ToString() == System.Windows.Forms.Keys.Enter.ToString()) SendMessage();
+        }
+
+        private void SendMessage()
+        {
+            if (TextZone.Text.Length > 0)
+            {
+                GetChat().SendMessage(TextZone.Text);
+                TextZone.Text = "";
+            }
         }
 
         // Animation or other cool things :
