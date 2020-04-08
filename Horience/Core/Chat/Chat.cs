@@ -72,50 +72,13 @@ namespace Horience.Core.Chat
 
             Int32 BytesReceived = Stream.Read(Response, 0, Response.Length);
             ResponseString = System.Text.Encoding.UTF8.GetString(Response, 0, BytesReceived);
-            string[] separatingStrings = { "¤" };
+            string[] separatingStrings = { "/-/" };
             string[] HistoriqueMessages = ResponseString.Split(separatingStrings, System.StringSplitOptions.RemoveEmptyEntries);
             Array.Reverse(HistoriqueMessages);
 
             foreach (string Message in HistoriqueMessages)
             {
                 AddMessage(Message);
-            }
-        }
-
-        // Check new messages on server :
-
-        public void CheckNewMessages()
-        {
-            TcpClient Client = new TcpClient(HOST, PORT);
-            byte[] ByteMessage = System.Text.Encoding.UTF8.GetBytes("messages");
-            NetworkStream Stream = Client.GetStream();
-
-            Stream.Write(ByteMessage, 0, ByteMessage.Length);
-
-            byte[] Response = new Byte[256];
-            string ResponseString = string.Empty;
-
-            Int32 BytesReceived = Stream.Read(Response, 0, Response.Length);
-            ResponseString = System.Text.Encoding.UTF8.GetString(Response, 0, BytesReceived);
-
-            List<string> Elements = new List<string>();
-
-            for (int i = 0; i < ChatList.Children.Count; i++)
-            {
-                Elements.Add(((Label)VisualTreeHelper.GetChild(ChatList, i)).Content.ToString());
-            }
-
-            string[] separatingStrings = { ":!" };
-            string[] HistoriqueMessages = ResponseString.Split(separatingStrings, System.StringSplitOptions.RemoveEmptyEntries);
-
-            if (HistoriqueMessages.Except(Elements.ToArray()).Count() == 0) return;
-
-            IEnumerable<string> NewMessages = HistoriqueMessages.Except(Elements.ToArray());
-
-            foreach (string Message in NewMessages)
-            {
-                AddMessage(Message);
-                Debug.WriteLine(Message);
             }
         }
     }

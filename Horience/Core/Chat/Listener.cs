@@ -28,13 +28,16 @@ namespace Horience.Core.Chat
             TcpListener Listener = new TcpListener(IPAddress.Any, 1070);
 
             Listener.Start();
-
+            Application.Current.Dispatcher.Invoke(() =>
+            {
+                System.Diagnostics.Debug.WriteLine("oui");
+            });
             Byte[] bytes = new Byte[256];
             string StringReceived = null;
 
             while (true)
             {
-
+                
                 TcpClient client = Listener.AcceptTcpClient();
                 Console.WriteLine("Connected!");
 
@@ -49,6 +52,7 @@ namespace Horience.Core.Chat
                     // Check client messages :
                     Application.Current.Dispatcher.Invoke(() =>
                     {
+                        System.Diagnostics.Debug.WriteLine("oui");
                         Parent.AddMessage(StringReceived);
                     });
                 }
