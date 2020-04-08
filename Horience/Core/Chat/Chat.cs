@@ -33,7 +33,7 @@ namespace Horience.Core.Chat
 
             Label MessageLabel = new Label()
             {
-                Content = Main.GetInstance().GetClient().getName() + " : " + Message,
+                Content = Message,
                 Margin = new Thickness(25, 0, 0, 0),
                 FontSize = 20,
                 Foreground = new SolidColorBrush(ColorConstants.WHITE)
@@ -53,7 +53,6 @@ namespace Horience.Core.Chat
             Stream.Write(ByteMessage, 0, ByteMessage.Length);
 
             Stream.Close();
-
         }
 
         public void SendConnectPacket()
