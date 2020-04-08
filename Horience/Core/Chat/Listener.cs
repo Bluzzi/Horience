@@ -25,20 +25,20 @@ namespace Horience.Core.Chat
 
         public void StartListener()
         {
+<<<<<<< Updated upstream
             IPAddress iP = Dns.GetHostAddresses("symp.fr")[0];
             TcpListener Listener = new TcpListener(IPAddress.Any, 1070);
+=======
+            IPAddress iPAddress = Dns.GetHostAddresses("symp.fr")[0];
+            TcpListener Listener = new TcpListener(iPAddress, 1070);
+>>>>>>> Stashed changes
 
             Listener.Start();
-            Application.Current.Dispatcher.Invoke(() =>
-            {
-                System.Diagnostics.Debug.WriteLine("oui");
-            });
             Byte[] bytes = new Byte[256];
             string StringReceived = null;
 
             while (true)
             {
-                
                 TcpClient client = Listener.AcceptTcpClient();
                 Console.WriteLine("Connected!");
 
