@@ -16,7 +16,7 @@ namespace Horience.Core.Chat
         private StackPanel ChatList;
 
         const string HOST = "symp.fr";
-        const int PORT = 1072;
+        const int PORT = 1073;
 
         public Chat(StackPanel ChatList)
         {
@@ -54,9 +54,6 @@ namespace Horience.Core.Chat
 
             Stream.Close();
 
-            //TODO : Vérifié si c'est bien envoyé, si oui, envoyé le message en local.
-
-            AddMessage(Message);
         }
 
         public void SendConnectPacket()

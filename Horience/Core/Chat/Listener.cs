@@ -25,6 +25,7 @@ namespace Horience.Core.Chat
 
         public void StartListener()
         {
+            IPAddress iP = Dns.GetHostAddresses("symp.fr")[0];
             TcpListener Listener = new TcpListener(IPAddress.Any, 1070);
 
             Listener.Start();
