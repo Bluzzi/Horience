@@ -10,7 +10,7 @@ namespace Horience.Core
 {
     public partial class Panel : Window
     {
-        private readonly Chat ChatUI;
+        private readonly Chat.Chat ChatUI;
 
         private Dictionary<string, string[]> Categories = new Dictionary<string, string[]>();
 
@@ -18,7 +18,7 @@ namespace Horience.Core
         {
             InitializeComponent();
 
-            ChatUI = new Chat(Chat);
+            ChatUI = new Chat.Chat(Chat);
 
             Categories.Add("WORLD", new string[] { "test", "other test" });
             Categories.Add("COMBAT", new string[] { "test", "other test" });
@@ -43,7 +43,7 @@ namespace Horience.Core
 
         // UI Getters :
 
-        public Chat GetChat()
+        public Chat.Chat GetChat()
         {
             return ChatUI;
         }

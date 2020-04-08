@@ -80,8 +80,9 @@
     <Compile Include="Core\Api\Memory\Editable\Property.cs" />
     <Compile Include="Core\Api\Memory\Memory.cs" />
     <Compile Include="Core\Api\Memory\MemoryBase.cs" />
+    <Compile Include="Core\Chat\Chat.cs" />
+    <Compile Include="Core\Chat\Listener.cs" />
     <Compile Include="Core\Client.cs" />
-    <Compile Include="Core\UI\Chat.cs" />
     <Compile Include="Info.cs" />
     <Compile Include="Core\Main.cs" />
     <Compile Include="Core\Panel.xaml.cs">
