@@ -88,12 +88,6 @@ namespace Horience.Core
         {
             if (Application.Current == null) return;
 
-            // Check client messages :
-            Application.Current.Dispatcher.Invoke(() =>
-            {
-                //GetPanel().GetChat().CheckNewMessages();
-            });
-
             // Check if Minecraft is running :
             if (Process.GetProcessesByName("Minecraft.Windows").Length == 0)
             {
