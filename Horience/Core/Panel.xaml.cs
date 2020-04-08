@@ -40,6 +40,8 @@ namespace Horience.Core
             return ChatUI;
         }
 
+        // Animation or other cool things :
+
         private void ChangeSize(object sender, SizeChangedEventArgs e)
         {
             if (e.PreviousSize == new Size(0, 0)) return;
@@ -52,7 +54,7 @@ namespace Horience.Core
             } 
             else
             {
-                Sender.BorderThickness = new Thickness(2);
+                Sender.BorderThickness = new Thickness(1);
             }
         }
     }
