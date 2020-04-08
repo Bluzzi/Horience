@@ -25,8 +25,10 @@ class MessageSender(threading.Thread):
         try:
             sender.connect((self.ip, 1070))
         except socket.error:
-            print(getDate() + " {0} is disconnected".format(self.ip))
-            connectedIPs.remove(self.ip)
+            if self.ip in connectedIPs:
+                print(getDate() + " {0} is disconnected".format(self.ip))
+                connectedIPs.remove(self.ip)
 
+        print(sender.recv(2000).decode("Utf8"))
         sender.send(self.message.encode("Utf8"))
         sender.close()
