@@ -1,4 +1,4 @@
-﻿using Horience.Core.UI;
+﻿using Horience.Core.Chat;
 using System;
 using System.Collections.Generic;
 using System.Diagnostics;

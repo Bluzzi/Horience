@@ -91,7 +91,7 @@ namespace Horience.Core
             // Check client messages :
             Application.Current.Dispatcher.Invoke(() =>
             {
-                GetPanel().GetChat().CheckNewMessages();
+                //GetPanel().GetChat().CheckNewMessages();
             });
 
             // Check if Minecraft is running :

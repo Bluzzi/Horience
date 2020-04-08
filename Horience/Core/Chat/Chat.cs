@@ -3,13 +3,12 @@ using System;
 using System.Collections.Generic;
 using System.Diagnostics;
 using System.Linq;
-using System.Net;
 using System.Net.Sockets;
 using System.Windows;
 using System.Windows.Controls;
 using System.Windows.Media;
 
-namespace Horience.Core.UI
+namespace Horience.Core.Chat
 {
     public class Chat
     {
@@ -21,13 +20,15 @@ namespace Horience.Core.UI
         public Chat(StackPanel ChatList)
         {
             this.ChatList = ChatList;
+
+            new Listener();
         }
 
         // Add a message in panel chat :
 
         private void AddMessage(string Message) //TODO: sender name devra etre supprimer est get directement via une propriété prédéfini. 
         {
-            if(ChatList.Children.Count > 100) ChatList.Children.RemoveAt(0);
+            if (ChatList.Children.Count > 100) ChatList.Children.RemoveAt(0);
 
             Label MessageLabel = new Label()
             {
@@ -75,31 +76,19 @@ namespace Horience.Core.UI
 
             List<string> Elements = new List<string>();
 
-            for (int i = 0; i < ChatList.Children.Count; i++) {
+            for (int i = 0; i < ChatList.Children.Count; i++)
+            {
                 Elements.Add(((Label)VisualTreeHelper.GetChild(ChatList, i)).Content.ToString());
             }
 
-            string[] separatingStrings = { ":!"};
+            string[] separatingStrings = { ":!" };
             string[] HistoriqueMessages = ResponseString.Split(separatingStrings, System.StringSplitOptions.RemoveEmptyEntries);
 
-            if (HistoriqueMessages.Equals(Elements.ToArray())) return;
+            if (HistoriqueMessages.Except(Elements.ToArray()).Count() == 0) return;
 
-            Debug.WriteLine("--------------------------");
-            foreach (string tgm in HistoriqueMessages)
-            {
-                Debug.WriteLine(tgm);
-            }
-            Debug.WriteLine("--------------------------");
-            foreach (string tgmm in Elements.ToArray())
-            {
-                Debug.WriteLine(tgmm);
-            }
+            IEnumerable<string> NewMessages = HistoriqueMessages.Except(Elements.ToArray());
 
-
-            string[] NewMessages = Elements.Where(x => !HistoriqueMessages.ToArray().Contains(x)).ToArray();
-            Array.Reverse(NewMessages);
-
-            foreach(string Message in NewMessages)
+            foreach (string Message in NewMessages)
             {
                 AddMessage(Message);
                 Debug.WriteLine(Message);

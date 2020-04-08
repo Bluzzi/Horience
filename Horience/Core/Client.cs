@@ -4,7 +4,7 @@
     {
         public string getName()
         {
-            return "Test";
+            return "Bluzzi";
         }
     }
 }
