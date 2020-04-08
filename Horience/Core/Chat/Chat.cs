@@ -47,7 +47,7 @@ namespace Horience.Core.Chat
         public void SendMessage(string Message) //TODO: sender name devra etre supprimer est get directement via une propriété prédéfini.
         {
             TcpClient Client = new TcpClient(HOST, PORT);
-            byte[] ByteMessage = System.Text.Encoding.UTF8.GetBytes("sendMessage¤" + Main.GetInstance().GetClient().getName() + " : " + Message);
+            byte[] ByteMessage = System.Text.Encoding.UTF8.GetBytes("sendMessage/-/" + Main.GetInstance().GetClient().getName() + " : " + Message);
             NetworkStream Stream = Client.GetStream();
 
             Stream.Write(ByteMessage, 0, ByteMessage.Length);
@@ -62,7 +62,7 @@ namespace Horience.Core.Chat
         public void SendConnectPacket()
         {
             TcpClient Client = new TcpClient(HOST, PORT);
-            byte[] ByteMessage = System.Text.Encoding.UTF8.GetBytes("connect¤");
+            byte[] ByteMessage = System.Text.Encoding.UTF8.GetBytes("connect/-/");
             NetworkStream Stream = Client.GetStream();
 
             Stream.Write(ByteMessage, 0, ByteMessage.Length);
