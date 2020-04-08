@@ -19,6 +19,8 @@ namespace Horience.Core
         private static Main Instance;
         private readonly Panel PanelInstance;
 
+        private readonly Client Client = new Client();
+
         private readonly int Mode;
 
         private readonly TimerSystem Timer = new TimerSystem();
@@ -68,6 +70,11 @@ namespace Horience.Core
         public ApiGetters GetApi()
         {
             return new ApiGetters();
+        }
+
+        public Client GetClient()
+        {
+            return Client;
         }
 
         public int GetMode()
