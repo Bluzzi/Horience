@@ -50,14 +50,12 @@ class Connection(threading.Thread):
     Register IP of client and send the message history.
     """
     def connect(self):
-        if self.ip in connectedIPs:
-            self.clientSocket.send("Error: You are already connected")
-            return
-
         print(getDate() + " {0}:{1} is connected, the message list has been sent".format(self.ip, self.port))
 
         self.clientSocket.send(SEPARATOR.join(messagesHistory).encode("Utf8"))
-        connectedIPs.append(self.ip)
+
+        if self.ip not in connectedIPs:
+            connectedIPs.append(self.ip)
 
     """
     Save the message and send it to all connected clients.

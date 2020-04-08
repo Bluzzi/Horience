@@ -4,7 +4,7 @@ from Connection import Connection
 
 # Server's IP and Port:
 HOST = "symp.fr"
-PORT = 1072
+PORT = 1073
 
 # Create server listener:
 listener = socket.socket(socket.AF_INET, socket.SOCK_STREAM)

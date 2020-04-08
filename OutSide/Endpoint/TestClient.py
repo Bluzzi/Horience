@@ -1,9 +1,9 @@
-# coding: utf8
+# coding: Utf8
 
 import socket
 
 HOST = "symp.fr"
-PORT = 1072
+PORT = 1073
 
 connexion = socket.socket(socket.AF_INET, socket.SOCK_STREAM)
 
