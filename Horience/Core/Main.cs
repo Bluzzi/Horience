@@ -36,16 +36,16 @@ namespace Horience.Core
                 Instance = this;
                 this.Mode = Mode;
 
+                // Open the panel and set the created static variable in Injector:
+                PanelInstance = new Panel();
+                PanelInstance.Show();
+
                 // Define the genral timer properties :
                 Timer.Interval = 50; // 50 * 20 = 1000 (timer is executed every Minecraft tick)
                 Timer.Elapsed += Running;
                 Timer.AutoReset = true;
 
                 Timer.Start();
-
-                // Open the panel and set the created static variable in Injector:
-                PanelInstance = new Panel();
-                PanelInstance.Show();
             }
             else
             {
