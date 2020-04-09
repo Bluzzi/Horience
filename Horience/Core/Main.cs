@@ -5,6 +5,7 @@ using TimerSystem = System.Timers.Timer;
 using System.Windows;
 using System.Threading;
 using Horience.Core.Chat;
+using System.Net.Sockets;
 
 namespace Horience.Core
 {
@@ -25,6 +26,7 @@ namespace Horience.Core
         private readonly int Mode;
 
         private readonly TimerSystem Timer = new TimerSystem();
+        private int TimerTicks = 0;
 
         public Main(int Mode)
         {
@@ -87,7 +89,32 @@ namespace Horience.Core
 
         private void Running(object sender, System.Timers.ElapsedEventArgs e)
         {
-            if (Application.Current == null)
+            //Increment ticks
+            TimerTicks++;
+            
+            TcpClient Client = new TcpClient(Chat.Chat.HOST, Chat.Chat.PORT);
+            byte[] ByteMessage = System.Text.Encoding.UTF8.GetBytes("getMessages/-/");
+            NetworkStream Stream = Client.GetStream();
+
+            Stream.Write(ByteMessage, 0, ByteMessage.Length);
+
+            byte[] Response = new Byte[256];
+            string ResponseString = string.Empty;
+
+            Int32 BytesReceived = Stream.Read(Response, 0, Response.Length);
+            ResponseString = System.Text.Encoding.UTF8.GetString(Response, 0, BytesReceived);
+            string[] separatingStrings = { "/-/" };
+            string[] HistoriqueMessages = ResponseString.Split(separatingStrings, System.StringSplitOptions.RemoveEmptyEntries);
+
+            foreach (string Message in HistoriqueMessages)
+            {
+                Application.Current.Dispatcher.Invoke(() =>
+                {
+                    Main.GetInstance().GetPanel().GetChat().AddMessage(Message);
+                });
+            }
+            
+                if (Application.Current == null)
             {
                 //Listener.ListenerThread.Abort();
             }

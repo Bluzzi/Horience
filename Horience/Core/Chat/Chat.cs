@@ -15,14 +15,13 @@ namespace Horience.Core.Chat
     {
         private StackPanel ChatList;
 
-        const string HOST = "symp.fr";
-        const int PORT = 1073;
+        public const string HOST = "symp.fr";
+        public const int PORT = 1073;
 
         public Chat(StackPanel ChatList)
         {
             this.ChatList = ChatList;
             SendConnectPacket();
-            new Listener(this);
         }
 
         // Add a message in panel chat :
