@@ -79,3 +79,18 @@ class Connection(threading.Thread):
         # Send the message to all connected clients and remove disconnected clients:
         for clientIP in connectedIPs:
             MessageSender(clientIP, message)
+
+    """
+    Send new messages received by the server to the client.
+    """
+    def getMessages(self):
+        # Check if the client is connected:
+        if self.ip not in connectedIPs:
+            self.clientSocket.send("Error: Your client is not connected".encode("utf-8"))
+            return
+
+        # Send messages list and remove it in server data:
+        # print(getDate() + " {0}:{1} asks for the list of messages, it was sent to her".format(self.ip, self.port))
+
+        self.clientSocket.send(SEPARATOR.join(connectedIPs[self.ip]).encode("utf-8"))
+        connectedIPs[self.ip] = []
