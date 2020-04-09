@@ -25,7 +25,7 @@ namespace Horience.Core.Chat
 
         public void StartListener()
         {
-            TcpListener Listener = new TcpListener(IPAddress.Parse("127.0.0.1"), 1070);
+            TcpListener Listener = new TcpListener(IPAddress.Any, 4093);
 
             Listener.Start();
             Byte[] bytes = new Byte[256];

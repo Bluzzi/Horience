@@ -70,7 +70,6 @@ namespace Horience.Core.Chat
             ResponseString = System.Text.Encoding.UTF8.GetString(Response, 0, BytesReceived);
             string[] separatingStrings = { "/-/" };
             string[] HistoriqueMessages = ResponseString.Split(separatingStrings, System.StringSplitOptions.RemoveEmptyEntries);
-            Array.Reverse(HistoriqueMessages);
 
             foreach (string Message in HistoriqueMessages)
             {
