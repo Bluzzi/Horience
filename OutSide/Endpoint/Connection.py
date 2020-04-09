@@ -24,7 +24,7 @@ class Connection(threading.Thread):
     """
     def run(self):
         # Check message received:
-        msg = self.clientSocket.recv(4000).decode("Utf8")
+        msg = self.clientSocket.recv(4000).decode("utf-8")
 
         # Manage data:
         self.dataManager(msg)
@@ -45,6 +45,8 @@ class Connection(threading.Thread):
             self.connect()
         elif data[0] == "sendMessage":
             self.sendMessage(data[1])
+        elif data[0] == "getMessages":
+            self.getMessages()
 
     """
     Register IP of client and send the message history.
@@ -52,22 +54,22 @@ class Connection(threading.Thread):
     def connect(self):
         print(getDate() + " {0}:{1} is connected, the message list has been sent".format(self.ip, self.port))
 
-        self.clientSocket.send(SEPARATOR.join(messagesHistory).encode("Utf8"))
+        self.clientSocket.send(SEPARATOR.join(messagesHistory).encode("utf-8"))
 
         if self.ip not in connectedIPs:
-            connectedIPs.append(self.ip)
+            connectedIPs[self.ip] = []
 
     """
-    Save the message and send it to all connected clients.
+    Save the message and save it to all connected clients data.
     """
     def sendMessage(self, message):
-        # Connect the client if it's not the case:
+        # Check if the client is connected:
         if self.ip not in connectedIPs:
-            self.clientSocket.send("Error: Your client is not connected".encode("Utf8"))
+            self.clientSocket.send("Error: Your client is not connected".encode("utf-8"))
             return
 
         # Log message:
-        print(getDate() + " {0}:{1} send message \"{2}\", this message is send to {3} connected clients"
+        print(getDate() + " {0}:{1} send message \"{2}\", this message is saved in {3} connected clients data"
               .format(self.ip, self.port, message, len(connectedIPs)))
 
         # Add message and clear message history if it is more than 100:
@@ -78,7 +80,7 @@ class Connection(threading.Thread):
 
         # Send the message to all connected clients and remove disconnected clients:
         for clientIP in connectedIPs:
-            MessageSender(clientIP, message)
+            connectedIPs[clientIP].append(message)
 
     """
     Send new messages received by the server to the client.
