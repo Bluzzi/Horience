@@ -1,2 +1,2 @@
 messagesHistory = []
-connectedIPs = []
+connectedIPs = {}
