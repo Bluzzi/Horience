@@ -19,16 +19,18 @@ class MessageSender(threading.Thread):
     """
     Send the message
     """
+
     def run(self):
         sender = socket.socket(socket.AF_INET, socket.SOCK_STREAM)
 
         try:
-            sender.connect((self.ip, 1070))
+            sender.connect((self.ip, 8211))
         except socket.error:
             if self.ip in connectedIPs:
                 print(getDate() + " {0} is disconnected".format(self.ip))
                 connectedIPs.remove(self.ip)
 
-        if sender.recv(2000).decode("Utf8") == "ok":
-            sender.send(self.message.encode("Utf8"))
-            sender.close()
+            return
+
+        sender.send(self.message.encode("utf-8"))
+        sender.close()

@@ -1,4 +1,4 @@
-# coding: Utf8
+# coding: utf-8
 
 import socket
 
@@ -15,6 +15,6 @@ except socket.error:
 
 print("Connexion successful !")
 
-connexion.send("sendMessage/-/Salut".encode("Utf8"))
+connexion.send("getMessages/-/".encode("utf-8"))
 
-print(connexion.recv(1028).decode("Utf8"))
+print(connexion.recv(1028).decode("utf-8"))
