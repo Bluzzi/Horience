@@ -4,8 +4,7 @@ using Horience.Core.Api;
 using TimerSystem = System.Timers.Timer;
 using System.Windows;
 using System.Threading;
-using Horience.Core.Chat;
-using System.Net.Sockets;
+using Horience.Core.Network.Request;
 
 namespace Horience.Core
 {
@@ -19,7 +18,7 @@ namespace Horience.Core
         }
 
         private static Main Instance;
-        private readonly Panel PanelInstance;
+        private readonly Panel.Panel PanelInstance;
 
         private readonly Client Client = new Client();
 
@@ -42,7 +41,7 @@ namespace Horience.Core
                 this.Mode = Mode;
 
                 // Open the panel and set the created static variable in Injector:
-                PanelInstance = new Panel();
+                PanelInstance = new Panel.Panel();
                 PanelInstance.Show();
 
                 // Define the genral timer properties :
@@ -65,7 +64,7 @@ namespace Horience.Core
             return Instance;
         }
 
-        public Panel GetPanel()
+        public Panel.Panel GetPanel()
         {
             return PanelInstance;
         }
@@ -91,30 +90,21 @@ namespace Horience.Core
         {
             //Increment ticks
             TimerTicks++;
-            
-            TcpClient Client = new TcpClient(Chat.Chat.HOST, Chat.Chat.PORT);
-            byte[] ByteMessage = System.Text.Encoding.UTF8.GetBytes("getMessages/-/");
-            NetworkStream Stream = Client.GetStream();
 
-            Stream.Write(ByteMessage, 0, ByteMessage.Length);
+            //Request newly sent messages
+            Request Request = new Request(RequestType.GET_MESSAGES);
 
-            byte[] Response = new Byte[256];
-            string ResponseString = string.Empty;
+            Response Response = Request.Send();
 
-            Int32 BytesReceived = Stream.Read(Response, 0, Response.Length);
-            ResponseString = System.Text.Encoding.UTF8.GetString(Response, 0, BytesReceived);
-            string[] separatingStrings = { "/-/" };
-            string[] HistoriqueMessages = ResponseString.Split(separatingStrings, System.StringSplitOptions.RemoveEmptyEntries);
-
-            foreach (string Message in HistoriqueMessages)
+            if (Response != null)
             {
                 Application.Current.Dispatcher.Invoke(() =>
                 {
-                    Main.GetInstance().GetPanel().GetChat().AddMessage(Message);
+                    Main.GetInstance().GetPanel().GetChat().UpdateMessageList(Response.ToArray());
                 });
             }
-            
-                if (Application.Current == null)
+
+            if (Application.Current == null)
             {
                 //Listener.ListenerThread.Abort();
             }
