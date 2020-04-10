@@ -61,7 +61,7 @@
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </ApplicationDefinition>
-    <Page Include="Core\Panel.xaml">
+    <Page Include="Core\Panel\Panel.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
@@ -80,11 +80,14 @@
     <Compile Include="Core\Api\Memory\Editable\Property.cs" />
     <Compile Include="Core\Api\Memory\Memory.cs" />
     <Compile Include="Core\Api\Memory\MemoryBase.cs" />
-    <Compile Include="Core\Chat\Chat.cs" />
     <Compile Include="Core\Client.cs" />
+    <Compile Include="Core\Network\Request\Request.cs" />
+    <Compile Include="Core\Network\Request\Response.cs" />
+    <Compile Include="Core\Panel\UI\Chat.cs" />
+    <Compile Include="Core\Panel\UI\Selector.cs" />
     <Compile Include="Info.cs" />
     <Compile Include="Core\Main.cs" />
-    <Compile Include="Core\Panel.xaml.cs">
+    <Compile Include="Core\Panel\Panel.xaml.cs">
       <DependentUpon>Panel.xaml</DependentUpon>
     </Compile>
     <Compile Include="Injector.xaml.cs">
