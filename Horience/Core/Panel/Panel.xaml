@@ -1,0 +1,96 @@
+﻿<Window x:Class="Horience.Core.Panel.Panel"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        mc:Ignorable="d"
+        Title="Horience" 
+        Height="1080" 
+        Width="1920" 
+        FontFamily="Calibri" 
+        WindowStartupLocation="CenterScreen" 
+        WindowState="Maximized"
+        BorderBrush="#FFFFFFFF"
+        SizeChanged="ChangeSize"
+        MinHeight="600"
+        MinWidth="1100">
+    <Window.Resources>
+        <Style TargetType="Button">
+            <Setter Property="Height" Value="60"/>
+            <Setter Property="HorizontalContentAlignment" Value="Center"/>
+            <Setter Property="FontSize" Value="15"/>
+            <Setter Property="FontWeight" Value="Bold"/>
+            <Setter Property="Foreground" Value="White"/>
+            <Setter Property="Background" Value="#2C2F33"/>
+            <Setter Property="BorderBrush" Value="{x:Null}"/>
+            <Setter Property="BorderThickness" Value="2"/>
+        </Style>
+    </Window.Resources>
+    <Grid Background="#36393F">
+        <!-- Base column definitions -->
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="0.14*"/>
+            <ColumnDefinition Width="*"/>
+        </Grid.ColumnDefinitions>
+
+        <!-- Category selector column -->
+        <ScrollViewer VerticalScrollBarVisibility="Hidden">
+            <!-- Manual definition in the code for x:Name "Category" -->
+            <StackPanel x:Name="Selector" Grid.Column="0"/>
+        </ScrollViewer>
+
+        <!-- Chat and cheat/utils selector -->
+        <Grid Grid.Column="1">
+            <Grid.RowDefinitions>
+                <RowDefinition/>
+                <RowDefinition Height="Auto"/>
+            </Grid.RowDefinitions>
+
+            <!-- Chat display -->
+            <ScrollViewer>
+                <StackPanel x:Name="Chat" Grid.Row="0" VerticalAlignment="Bottom"/>
+            </ScrollViewer>
+
+            <!-- Manual definition in the code for x:Name "CheatAndUtils" -->
+            <WrapPanel x:Name="CheatAndUtils" Grid.Row="0" Panel.ZIndex="1">
+                <Button Background="#55FF55" Padding="50,0">X RAY</Button>
+                <Button Background="#55FF55" Padding="50,0">AIMBOT</Button>
+                <Button Background="#55FF55" Padding="50,0">AUTO CLICK</Button>
+                <Button Background="#55FF55" Padding="50,0">SPEED</Button>
+                <Button Background="#55FF55" Padding="50,0">X RAY</Button>
+                <Button Background="#55FF55" Padding="50,0">AIMBOT</Button>
+                <Button Background="#55FF55" Padding="50,0">AUTO CLICK</Button>
+                <Button Background="#55FF55" Padding="50,0">SPEED</Button>
+                <Button Background="#55FF55" Padding="50,0">X RAY</Button>
+                <Button Background="#55FF55" Padding="50,0">AIMBOT</Button>
+                <Button Background="#FF5555" Padding="50,0">AUTO CLICK</Button>
+                <Button Background="#55FF55" Padding="50,0">SPEED</Button>
+                <Button Background="#55FF55" Padding="50,0">X RAY</Button>
+                <Button Background="#FF5555" Padding="50,0">AIMBOT</Button>
+                <Button Background="#55FF55" Padding="50,0">AUTO CLICK</Button>
+                <Button Background="#55FF55" Padding="50,0">SPEED</Button>
+                <Button Background="#55FF55" Padding="50,0">X RAY</Button>
+                <Button Background="#FF5555" Padding="50,0">AIMBOT</Button>
+                <Button Background="#55FF55" Padding="50,0">AUTO CLICK</Button>
+                <Button Background="#55FF55" Padding="50,0">SPEED</Button>
+                <Button Background="#55FF55" Padding="50,0">X RAY</Button>
+                <Button Background="#55FF55" Padding="50,0">AIMBOT</Button>
+                <Button Background="#FF5555" Padding="50,0">AUTO CLICK</Button>
+                <Button Background="#55FF55" Padding="50,0">SPEED</Button>
+            </WrapPanel>
+
+            <!-- Chat text box and send button -->
+            <Grid Grid.Row="1">
+                <Grid>
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition Width="*"/>
+                        <ColumnDefinition Width="0.1*"/>
+                    </Grid.ColumnDefinitions>
+
+                    <TextBox Grid.Column="0" x:Name="TextZone" Foreground="White" VerticalContentAlignment="Center" Background="#40444B" FontSize="20" Margin="15" Padding="20,0,20,0" KeyDown="SendKeyDown"/>
+                    <Button Grid.Column="1" Margin="10" Click="OnSendClick">Send</Button>
+                </Grid>
+            </Grid>
+        </Grid>
+    </Grid>
+</Window>
