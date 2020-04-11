@@ -43,15 +43,17 @@ namespace Horience.Core.Panel.UI
         {
             if (ChatList.Children.Count > 100) ChatList.Children.RemoveAt(0);
 
-            Label MessageLabel = new Label()
+            TextBlock MessageTextBlock = new TextBlock()
             {
-                Content = Message,
-                Margin = new Thickness(25, 0, 0, 0),
+                Text = Message,
+                Margin = new Thickness(25, 15, 0, 0),
                 FontSize = 20,
-                Foreground = new SolidColorBrush(ColorConstants.WHITE)
+                Foreground = new SolidColorBrush(ColorConstants.WHITE),
+                TextWrapping = TextWrapping.Wrap
             };
 
-            ChatList.Children.Add(MessageLabel);
+            ChatList.Children.Add(MessageTextBlock);
+            ((ScrollViewer)ChatList.Parent).ScrollToEnd();
         }
 
         /// <summary>
