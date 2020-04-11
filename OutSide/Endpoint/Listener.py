@@ -1,3 +1,6 @@
+# encoding: utf8
+# coding: utf8
+
 import socket
 from Connection import Connection
 

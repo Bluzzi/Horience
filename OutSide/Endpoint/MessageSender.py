@@ -1,4 +1,4 @@
-# encoding: utf-8
+# encoding: utf8
 
 import threading
 import socket
@@ -32,5 +32,5 @@ class MessageSender(threading.Thread):
 
             return
 
-        sender.send(self.message.encode("utf-8"))
+        sender.send(self.message.encode("utf8"))
         sender.close()
