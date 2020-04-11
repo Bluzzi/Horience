@@ -49,7 +49,9 @@ namespace Horience.Core.Network.Request
         public Response Send()
         {
             NetworkStream Stream = Client.GetStream();
+
             byte[] ByteMessage = null;
+            byte[] ResponseBuffer = new Byte[4096];
 
             switch (RequestType)
             {
@@ -57,6 +59,7 @@ namespace Horience.Core.Network.Request
                     ByteMessage = System.Text.Encoding.UTF8.GetBytes(
                         "connect/-/"
                         );
+                    ResponseBuffer = new byte[65536];
                     break;
 
                 case RequestType.SEND_MESSAGE:
@@ -71,8 +74,6 @@ namespace Horience.Core.Network.Request
             }
 
             Stream.Write(ByteMessage, 0, ByteMessage.Length);
-
-            byte[] ResponseBuffer = new Byte[256];
 
             Int32 BytesReceived = Stream.Read(ResponseBuffer, 0, ResponseBuffer.Length);
 
