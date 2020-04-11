@@ -60,15 +60,15 @@ namespace Horience
             // Call loadPanel method with mode selected :
             if (Cheat && Utils)
             {
-                StartLoadingPanel((int)Main.MODES.ALL);
+                StartLoadingPanel(ModeType.ALL);
             }
             else if (Cheat)
             {
-                StartLoadingPanel((int)Main.MODES.CHEAT);
+                StartLoadingPanel(ModeType.CHEAT);
             }
             else if (Utils)
             {
-                StartLoadingPanel((int)Main.MODES.UTILS);
+                StartLoadingPanel(ModeType.UTILS);
             }
         }
 
@@ -77,9 +77,9 @@ namespace Horience
         private readonly TimerSystem Timer = new TimerSystem();
         private int TimerElapsed = 0;
 
-        private int Mode;
+        private ModeType Mode;
 
-        private void StartLoadingPanel(int Mode)
+        private void StartLoadingPanel(ModeType Mode)
         {
             this.Mode = Mode;
 

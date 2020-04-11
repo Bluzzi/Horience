@@ -9,7 +9,7 @@ namespace Horience
         {
             if (Info.IS_BETA)
             {
-                new Main((int)Core.Main.MODES.ALL);
+                new Main(ModeType.ALL);
             }
             else
             {

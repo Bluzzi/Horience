@@ -8,32 +8,27 @@ using Horience.Core.Network.Request;
 
 namespace Horience.Core
 {
+    public enum ModeType
+    {
+        CHEAT = 0,
+        UTILS = 1,
+        ALL = 2,
+    }
+
     class Main
     {
-        public enum MODES
-        {
-            CHEAT = 0,
-            UTILS = 1,
-            ALL = 2,
-        }
-
         private static Main Instance;
         private readonly Panel.Panel PanelInstance;
 
         private readonly Client Client = new Client();
 
-        private readonly int Mode;
+        private readonly ModeType Mode;
 
         private readonly TimerSystem Timer = new TimerSystem();
         private int TimerTicks = 0;
 
-        public Main(int Mode)
+        public Main(ModeType Mode)
         {
-            if (!Enum.IsDefined(typeof(MODES), (object)Mode))
-            {
-                throw new Exception("Invalid mode, don't use magic number");
-            }
-
             if (Main.Instance == null)
             {
                 // Save instance and application mode :
@@ -79,7 +74,7 @@ namespace Horience.Core
             return Client;
         }
 
-        public int GetMode()
+        public ModeType GetMode()
         {
             return Mode;
         }
