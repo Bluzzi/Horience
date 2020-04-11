@@ -25,7 +25,6 @@ namespace Horience.Core
         private readonly ModeType Mode;
 
         private readonly TimerSystem Timer = new TimerSystem();
-        private int TimerTicks = 0;
 
         public Main(ModeType Mode)
         {
@@ -83,12 +82,8 @@ namespace Horience.Core
 
         private void Running(object sender, System.Timers.ElapsedEventArgs e)
         {
-            //Increment ticks
-            TimerTicks++;
-
             //Request newly sent messages
             Request Request = new Request(RequestType.GET_MESSAGES);
-
             Response Response = Request.Send();
 
             if (Response != null)
