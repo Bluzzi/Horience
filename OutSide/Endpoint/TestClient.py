@@ -3,7 +3,7 @@
 import socket
 
 HOST = "symp.fr"
-PORT = 1073
+PORT = 1093
 
 connexion = socket.socket(socket.AF_INET, socket.SOCK_STREAM)
 
@@ -15,6 +15,7 @@ except socket.error:
 
 print("Connexion successful !")
 
-connexion.send("sendMessage/-/à".encode("utf8"))
+#connexion.send("sendMessage/¤/faction/¤/Bluzzi/¤/Nan sérieux il est vraiment nul !!".encode("utf8"))
+connexion.send("getMessage/¤/19132".encode("utf8"))
 
 print(connexion.recv(1028).decode("utf8"))
